@@ -1,0 +1,80 @@
+---
+const navItems = [
+  { label: "Inicio", href: "/" },
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Productos", href: "#productos" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<header
+  class="fixed w-full bg-[#212120] top-0 z-50 transition-all duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="flex items-center gap-2 group">
+          <img
+            class="h-16 w-18 transition-transform duration-300 group-hover:scale-105"
+            src="/WhiteLogo.png"
+            alt="Estilo Gráfico"
+          />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="text-white hover:text-brand-600 font-semibold text-sm transition-colors relative group uppercase tracking-widest"
+            >
+              {item.label}
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-500 transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden md:flex items-center">
+        <a
+          href="https://wa.me/573216426377"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent rounded-full shadow-sm text-sm font-bold text-zinc-900 bg-brand-500 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500"
+        >
+          Contáctanos
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex items-center md:hidden">
+        <button
+          type="button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed -->
+          <svg
+            class="block h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --color-brand-50: #fefce8;
+  --color-brand-100: #fef9c3;
+  --color-brand-500: #eab308;
+  --color-brand-600: #ca8a04;
+  --color-brand-900: #713f12;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-zinc-800 bg-zinc-50;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight text-zinc-900;
+  }
+}
+
+/* Custom Utilities for Glassmorphism */
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-zinc-200/50 shadow-md;
+  }
+  .glass-dark {
+    @apply bg-zinc-900/80 backdrop-blur-md border border-zinc-800/50 shadow-xl;
+  }
+}
