@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import Edding from "../assets/Edding.png";
+import Enviaseo from "../assets/Enviaseo.png";
+import Madecentro from "../assets/madecentro.jpg";
+import Pool from "../assets/Pool.png";
+
+const brands = [
+  { name: "Edding", logo: Edding, height: "max-h-12" },
+  { name: "Enviaseo", logo: Enviaseo, height: "max-h-20" },
+  { name: "Madecentro", logo: Madecentro, height: "max-h-12" },
+  { name: "Pool", logo: Pool, height: "max-h-20" },
+];
+
+const duplicatedBrands = [...brands, ...brands, ...brands];
+---
+
+<section class="py-10 bg-white border-y border-zinc-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+    <p class="text-center text-xl font-medium text-zinc-900 tracking-widest">
+      Confían en nosotros
+    </p>
+  </div>
+
+  <div class="relative overflow-hidden">
+    <!-- Fade edges -->
+    <div
+      class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10"
+    >
+    </div>
+    <div
+      class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"
+    >
+    </div>
+
+    <!-- Track -->
+    <div class="flex animate-scroll">
+      {
+        duplicatedBrands.map((brand) => (
+          <div class="flex-shrink-0 mx-12 flex items-center justify-center w-[160px]">
+            <Image
+              src={brand.logo}
+              alt={brand.name}
+              class={`${brand.height} w-auto object-contain opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500`}
+              loading="eager"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-160px * 4 - 3rem * 4));
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+    width: max-content;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+</style>
