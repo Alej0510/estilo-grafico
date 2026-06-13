@@ -1,17 +1,16 @@
 ---
+import { products } from "../data/products";
+
 const navItems = [
   { label: "Inicio", href: "/" },
   { label: "Nosotros", href: "/nosotros" },
-  { label: "Productos", href: "/productos", dropdown: true },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Productos", dropdown: true },
 ];
 
-const dropdownItems = [
-  { label: "Etiquetas y empaques", href: "/productos" },
-  { label: "Material Impreso litográfico", href: "/productos" },
-  { label: "Impresión a gran formato", href: "/productos" },
-  { label: "Servicio de Diseño e Imagen", href: "/productos" },
-];
+const dropdownItems = products.map((p) => ({
+  label: p.navLabel,
+  href: `/productos/${p.slug}`,
+}));
 ---
 
 <header
@@ -43,9 +42,11 @@ const dropdownItems = [
           navItems.map((item) => (
             item.dropdown ? (
               <div class="relative group">
-                <a
-                  href={item.href}
-                  class="relative px-4 py-2 text-white/80 hover:text-white font-medium text-sm transition-all duration-300 inline-flex items-center gap-1.5"
+                <button
+                  type="button"
+                  class="relative px-4 py-2 text-white/80 hover:text-white font-medium text-sm transition-all duration-300 inline-flex items-center gap-1.5 cursor-pointer"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
                   <span class="relative z-10 uppercase tracking-wider text-xs">{item.label}</span>
                   <svg class="w-3 h-3 text-brand-500 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,7 +54,7 @@ const dropdownItems = [
                   </svg>
                   <div class="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100" />
                   <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-600 transition-all duration-300 group-hover:w-6 rounded-full" />
-                </a>
+                </button>
 
                 <!-- Dropdown -->
                 <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -193,7 +194,7 @@ const dropdownItems = [
           stroke-linejoin="round"
           stroke-width="2"
           d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
+        </svg>
     </button>
   </div>
 
@@ -204,15 +205,12 @@ const dropdownItems = [
         navItems.map((item) => (
           item.dropdown ? (
             <div>
-              <a
-                href={item.href}
-                class="mobile-nav-link flex items-center justify-between gap-4 px-4 py-4 text-white hover:text-brand-400 hover:bg-white/5 rounded-xl font-medium transition-all duration-300"
-              >
+              <span class="flex items-center justify-between gap-4 px-4 py-4 text-white font-medium">
                 <span class="text-lg tracking-wide">{item.label}</span>
                 <svg class="w-4 h-4 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                 </svg>
-              </a>
+              </span>
               <div class="ml-4 pl-4 border-l border-white/10 space-y-1 mt-1">
                 {dropdownItems.map((di) => (
                   <a href={di.href} class="mobile-nav-link block px-4 py-3 text-white/60 hover:text-white/90 hover:bg-white/5 rounded-xl text-sm transition-all duration-200">
