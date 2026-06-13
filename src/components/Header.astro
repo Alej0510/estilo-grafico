@@ -247,39 +247,14 @@ const dropdownItems = [
 </div>
 
 <script>
-  const menuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const mobileOverlay = document.getElementById("mobile-overlay");
-  const closeButton = document.getElementById("mobile-close-button");
-  const header = document.getElementById("header");
-  let lastScroll = 0;
   let isMenuOpen = false;
-
-  // Scroll shadow effect
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 50) {
-      header?.classList.add("shadow-2xl", "shadow-black/20");
-    } else {
-      header?.classList.remove("shadow-2xl", "shadow-black/20");
-    }
-
-    lastScroll = currentScroll;
-  });
-
-  function openMenu() {
-    isMenuOpen = true;
-    mobileMenu?.classList.remove("translate-x-full");
-    mobileMenu?.classList.add("translate-x-0");
-    mobileOverlay?.classList.remove("opacity-0", "pointer-events-none");
-    mobileOverlay?.classList.add("opacity-100");
-    menuButton?.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
-  }
 
   function closeMenu() {
     isMenuOpen = false;
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileOverlay = document.getElementById("mobile-overlay");
+    const menuButton = document.getElementById("mobile-menu-button");
+
     mobileMenu?.classList.add("translate-x-full");
     mobileMenu?.classList.remove("translate-x-0");
     mobileOverlay?.classList.add("opacity-0", "pointer-events-none");
@@ -288,23 +263,48 @@ const dropdownItems = [
     document.body.style.overflow = "";
   }
 
-  // Toggle mobile menu
-  menuButton?.addEventListener("click", () => {
-    if (isMenuOpen) {
-      closeMenu();
+  function openMenu() {
+    isMenuOpen = true;
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileOverlay = document.getElementById("mobile-overlay");
+    const menuButton = document.getElementById("mobile-menu-button");
+
+    mobileMenu?.classList.remove("translate-x-full");
+    mobileMenu?.classList.add("translate-x-0");
+    mobileOverlay?.classList.remove("opacity-0", "pointer-events-none");
+    mobileOverlay?.classList.add("opacity-100");
+    menuButton?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  window.addEventListener("scroll", () => {
+    const header = document.getElementById("header");
+
+    if (window.pageYOffset > 50) {
+      header?.classList.add("shadow-2xl", "shadow-black/20");
     } else {
-      openMenu();
+      header?.classList.remove("shadow-2xl", "shadow-black/20");
     }
   });
 
-  // Close with X button
-  closeButton?.addEventListener("click", closeMenu);
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
 
-  // Close when clicking overlay
-  mobileOverlay?.addEventListener("click", closeMenu);
+    if (target.closest("#mobile-menu-button")) {
+      if (isMenuOpen) closeMenu();
+      else openMenu();
+      return;
+    }
 
-  // Close menu when clicking a link
-  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
-    link.addEventListener("click", closeMenu);
+    if (
+      target.closest("#mobile-close-button") ||
+      target.closest("#mobile-overlay") ||
+      target.closest(".mobile-nav-link")
+    ) {
+      closeMenu();
+    }
   });
+
+  document.addEventListener("astro:page-load", closeMenu);
 </script>

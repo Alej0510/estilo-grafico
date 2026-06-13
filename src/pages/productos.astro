@@ -274,34 +274,33 @@ const faqs = [
 </Layout>
 
 <script>
-  document.querySelectorAll(".faq-toggle").forEach((button) => {
-    button.addEventListener("click", () => {
-      const answer = button.nextElementSibling;
-      const icon = button.querySelector(".faq-icon");
-      const chevron = button.querySelector(".faq-chevron");
-      const isOpen =
-        answer.style.maxHeight !== "0px" && answer.style.maxHeight !== "";
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(".faq-toggle");
+    if (!button) return;
 
-      // Close all
-      document.querySelectorAll(".faq-answer").forEach((a) => {
-        a.style.maxHeight = "0px";
-      });
-      document.querySelectorAll(".faq-icon").forEach((i) => {
-        i.classList.remove("bg-brand-500", "text-white");
-        i.classList.add("bg-zinc-100");
-      });
-      document.querySelectorAll(".faq-chevron").forEach((c) => {
-        c.classList.remove("rotate-180");
-      });
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector(".faq-icon");
+    const chevron = button.querySelector(".faq-chevron");
+    const isOpen =
+      answer.style.maxHeight !== "0px" && answer.style.maxHeight !== "";
 
-      // Open clicked
-      if (!isOpen) {
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        icon.classList.remove("bg-zinc-100");
-        icon.classList.add("bg-brand-500", "text-white");
-        chevron.classList.add("rotate-180");
-      }
+    document.querySelectorAll(".faq-answer").forEach((a) => {
+      a.style.maxHeight = "0px";
     });
+    document.querySelectorAll(".faq-icon").forEach((i) => {
+      i.classList.remove("bg-brand-500", "text-white");
+      i.classList.add("bg-zinc-100");
+    });
+    document.querySelectorAll(".faq-chevron").forEach((c) => {
+      c.classList.remove("rotate-180");
+    });
+
+    if (!isOpen) {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+      icon.classList.remove("bg-zinc-100");
+      icon.classList.add("bg-brand-500", "text-white");
+      chevron.classList.add("rotate-180");
+    }
   });
 </script>
 
