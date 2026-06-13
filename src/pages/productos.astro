@@ -1,0 +1,328 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const productos = [
+  {
+    icon: `<svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>`,
+    color: "from-brand-500 to-brand-600",
+    accent: "bg-brand-500/10 text-brand-600",
+    title: "Etiquetas y Empaquetado",
+    description:
+      "Nuestras soluciones de etiquetas y empaquetado que destacan por su calidad y diseño. Perfectas para darle un toque profesional y atractivo a tus productos.",
+  },
+  {
+    icon: `<svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+    color: "from-amber-500 to-orange-500",
+    accent: "bg-amber-500/10 text-amber-600",
+    title: "Material Impreso",
+    description:
+      "Desde tarjetas de presentación hasta folletos, ofrecemos una amplia gama de materiales impresos que combinan creatividad y precisión para satisfacer todas tus necesidades.",
+  },
+  {
+    icon: `<svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>`,
+    color: "from-orange-500 to-yellow-400",
+    accent: "bg-orange-500/10 text-orange-600",
+    title: "Impresión a Gran Formato",
+    description:
+      "Transforma tus ideas en grandes impresiones con nuestros servicios de impresión a gran formato. Ideal para afiches, banners y más, con una calidad que no pasa desapercibida.",
+  },
+  {
+    icon: `<svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`,
+    color: "from-yellow-500 to-amber-600",
+    accent: "bg-yellow-500/10 text-yellow-600",
+    title: "Servicio de Diseño e Imagen",
+    description:
+      "Nuestro equipo de diseño está listo para crear soluciones visuales impactantes que reflejen la esencia de tu marca. Desde logotipos hasta campañas completas, estamos aquí para ayudarte.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué tipos de etiquetas y empaquetado ofrecen?",
+    a: "Ofrecemos una variedad de etiquetas adhesivas, etiquetas colgantes y empaques personalizados que se adaptan a las necesidades de tu producto, garantizando calidad y diseño atractivo.",
+  },
+  {
+    q: "¿Qué materiales impresos pueden realizar?",
+    a: "Podemos imprimir tarjetas de presentación, folletos, catálogos, flyers y más, utilizando técnicas avanzadas para asegurar una alta calidad en cada pieza.",
+  },
+  {
+    q: "¿Qué opciones de impresión a gran formato tienen disponibles?",
+    a: "Ofrecemos impresiones a gran formato como afiches, banners, lonas y vinilos, ideales para publicidad y eventos, con una calidad que destaca a gran escala.",
+  },
+  {
+    q: "¿Qué incluye su servicio de diseño e imagen?",
+    a: "Nuestro servicio de diseño e imagen incluye la creación de logotipos, identidad corporativa, diseño de materiales promocionales y campañas visuales completas, adaptadas a las necesidades de tu marca.",
+  },
+];
+---
+
+<Layout title="Productos y Servicios">
+  <Header />
+  <main>
+    <!-- ========== HERO ========== -->
+    <section
+      class="relative pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-32 overflow-hidden"
+    >
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-zinc-50 via-white to-zinc-100/80"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-[0.02]"
+          style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.12) 1px, transparent 0); background-size: 32px 32px;"
+        >
+        </div>
+        <div
+          class="absolute top-0 -right-32 w-[400px] sm:w-[500px] lg:w-[700px] h-[400px] sm:h-[500px] lg:h-[700px] bg-brand-500/5 rounded-full blur-[120px]"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 -left-32 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-amber-500/4 rounded-full blur-[100px]"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <div
+          class="flex items-center gap-2 text-sm text-zinc-400 mb-6 animate-fade-in-up"
+          style="animation-delay: 0.1s;"
+        >
+          <a href="/" class="hover:text-brand-600 transition-colors">Inicio</a>
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"></path></svg
+          >
+          <span class="text-zinc-500">Productos y servicios</span>
+        </div>
+
+        <div class="max-w-3xl">
+          <h1
+            class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-zinc-900 tracking-tight leading-tight mb-6 animate-fade-in-up"
+            style="animation-delay: 0.2s;"
+          >
+            Descubre Nuestros<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 via-brand-600 to-amber-600"
+              >Servicios y Productos</span
+            >
+          </h1>
+          <p
+            class="text-lg sm:text-xl text-zinc-500 leading-relaxed animate-fade-in-up"
+            style="animation-delay: 0.3s;"
+          >
+            Ofrecemos una amplia gama de servicios y productos diseñados para
+            satisfacer todas tus necesidades de impresión y diseño gráfico.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PRODUCT GRID ========== -->
+    <section class="py-16 sm:py-20 lg:py-28 bg-zinc-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
+          {
+            productos.map((producto, index) => (
+              <div
+                class="relative bg-white rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-10 border border-zinc-200/70 shadow-xl shadow-zinc-200/30 group hover:shadow-2xl hover:shadow-zinc-200/40 hover:border-brand-200/60 hover:-translate-y-1 transition-all duration-500 overflow-hidden animate-fade-in-up"
+                style={`animation-delay: ${0.1 + index * 0.15}s;`}
+              >
+                <div
+                  class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${producto.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                />
+
+                <div
+                  class={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl ${producto.accent} mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500`}
+                >
+                  <Fragment set:html={producto.icon} />
+                </div>
+
+                <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-4 tracking-tight">
+                  {producto.title}
+                </h2>
+
+                <p class="text-zinc-500 leading-relaxed text-base sm:text-lg">
+                  {producto.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="py-16 sm:py-20 lg:py-28 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14 sm:mb-18">
+          <span
+            class="inline-block px-3 py-1 text-xs font-bold text-brand-600 mb-6 tracking-wider"
+          >
+            FAQ
+          </span>
+          <h2
+            class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight"
+          >
+            ¿Tienes alguna pregunta?
+          </h2>
+          <p class="text-zinc-500 mt-3 text-lg">Preguntas frecuentes</p>
+        </div>
+
+        <div class="space-y-4" id="faq-list">
+          {
+            faqs.map((faq, index) => (
+              <div
+                class="border border-zinc-200 rounded-2xl sm:rounded-3xl overflow-hidden animate-fade-in-up"
+                style={`animation-delay: ${0.1 + index * 0.1}s;`}
+              >
+                <button
+                  class="faq-toggle w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left hover:bg-zinc-50 transition-colors duration-300"
+                  type="button"
+                >
+                  <span class="text-base sm:text-lg font-semibold text-zinc-800 pr-4 leading-snug">
+                    {faq.q}
+                  </span>
+                  <span class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-zinc-100 flex items-center justify-center transition-all duration-300 faq-icon">
+                    <svg
+                      class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-500 transition-transform duration-300 faq-chevron"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </button>
+                <div class="faq-answer overflow-hidden" style="max-height: 0;">
+                  <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-zinc-500 leading-relaxed text-base">
+                    {faq.a}
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="py-16 sm:py-20 lg:py-28 relative bg-zinc-50/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div
+          class="relative bg-zinc-900 rounded-[2.5rem] sm:rounded-[3rem] p-10 sm:p-14 lg:p-20 overflow-hidden shadow-2xl shadow-zinc-900/20"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-brand-500/10 to-transparent"
+          >
+          </div>
+          <div
+            class="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-brand-500/10 rounded-full blur-[60px]"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 bg-amber-500/5 rounded-full blur-[60px]"
+          >
+          </div>
+
+          <div class="relative z-10">
+            <h2
+              class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-6"
+            >
+              ¿Listo para empezar tu proyecto?
+            </h2>
+            <p
+              class="text-lg text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed"
+            >
+              Contáctanos hoy y descubre cómo podemos hacer realidad tus ideas
+              con nuestros servicios de impresión y diseño.
+            </p>
+            <a
+              href="https://wa.me/573216426377"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-600 text-zinc-900 font-bold rounded-2xl hover:shadow-lg hover:shadow-brand-500/20 transition-all duration-300"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                ></path>
+              </svg>
+              Contáctanos por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  document.querySelectorAll(".faq-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector(".faq-icon");
+      const chevron = button.querySelector(".faq-chevron");
+      const isOpen =
+        answer.style.maxHeight !== "0px" && answer.style.maxHeight !== "";
+
+      // Close all
+      document.querySelectorAll(".faq-answer").forEach((a) => {
+        a.style.maxHeight = "0px";
+      });
+      document.querySelectorAll(".faq-icon").forEach((i) => {
+        i.classList.remove("bg-brand-500", "text-white");
+        i.classList.add("bg-zinc-100");
+      });
+      document.querySelectorAll(".faq-chevron").forEach((c) => {
+        c.classList.remove("rotate-180");
+      });
+
+      // Open clicked
+      if (!isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        icon.classList.remove("bg-zinc-100");
+        icon.classList.add("bg-brand-500", "text-white");
+        chevron.classList.add("rotate-180");
+      }
+    });
+  });
+</script>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+</style>
