@@ -1,0 +1,370 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const values = [
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>`,
+    title: "Calidad",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>`,
+    title: "Creatividad",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>`,
+    title: "Compromiso",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+    title: "Innovación",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
+    title: "Sostenibilidad",
+  },
+];
+
+const year = new Date().getFullYear();
+const yearsSince = year - 2007;
+---
+
+<Layout title="Nosotros">
+  <Header />
+  <main>
+    <!-- ========== STORY HERO ========== -->
+    <section
+      class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-36 overflow-hidden"
+    >
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-zinc-50 via-white to-zinc-100/80"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-[0.02]"
+          style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.12) 1px, transparent 0); background-size: 32px 32px;"
+        >
+        </div>
+        <div
+          class="absolute top-0 -right-32 w-[400px] sm:w-[500px] lg:w-[700px] h-[400px] sm:h-[500px] lg:h-[700px] bg-brand-500/5 rounded-full blur-[120px]"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 -left-32 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-amber-500/4 rounded-full blur-[100px]"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <!-- Left: Year + Numbers -->
+          <div
+            class="lg:col-span-5 animate-fade-in-up"
+            style="animation-delay: 0.1s;"
+          >
+            <div
+              class="relative inline-flex items-center justify-center w-36 h-36 sm:w-44 sm:h-44 lg:w-56 lg:h-56 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 text-zinc-900 shadow-2xl shadow-brand-500/20 mb-8 sm:mb-10"
+            >
+              <div class="text-center">
+                <span
+                  class="block text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight"
+                  >2007</span
+                >
+              </div>
+              <div
+                class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-zinc-900 text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider whitespace-nowrap"
+              >
+                Nuestra historia
+              </div>
+            </div>
+
+            <div class="flex gap-8 sm:gap-12 mt-12">
+              <div>
+                <div class="text-3xl sm:text-4xl font-extrabold text-zinc-900">
+                  {yearsSince}
+                </div>
+                <div class="text-sm text-zinc-500 mt-1">Años</div>
+              </div>
+              <div class="w-px bg-zinc-200"></div>
+              <div>
+                <div class="text-3xl sm:text-4xl font-extrabold text-zinc-900">
+                  100%
+                </div>
+                <div class="text-sm text-zinc-500 mt-1">Calidad</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Story Text -->
+          <div
+            class="lg:col-span-7 animate-fade-in-up"
+            style="animation-delay: 0.25s;"
+          >
+            <span
+              class="inline-block py-1 text-xs font-bold text-brand-600 mb-6 tracking-wider"
+            >
+              NUESTRA HISTORIA
+            </span>
+
+            <h1
+              class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight mb-6"
+            >
+              En 2007 dio comienzo<br />
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 via-brand-600 to-amber-600"
+                >nuestra historia</span
+              >
+            </h1>
+
+            <p class="text-lg text-zinc-500 leading-relaxed">
+              Comenzamos a innovar en el mundo de la litografía, convirtiéndonos
+              hoy en una compañía líder en soluciones creativas para empresas
+              que lo requieran y destacar como única en todo el mercado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MISSION & VISION CARDS ========== -->
+    <section class="py-16 sm:py-20 lg:py-28 relative bg-zinc-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+          <!-- Mission Card -->
+          <div
+            class="relative bg-white rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-10 lg:p-12 border border-zinc-200/70 shadow-xl shadow-zinc-200/30 group hover:shadow-2xl hover:shadow-zinc-200/40 hover:border-brand-200/60 transition-all duration-500 overflow-hidden animate-fade-in-up"
+            style="animation-delay: 0.1s;"
+          >
+            <div
+              class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            >
+            </div>
+
+            <div
+              class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-500/10 text-brand-600 mb-6 sm:mb-8"
+            >
+              <svg
+                class="w-7 h-7 sm:w-8 sm:h-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+
+            <h2
+              class="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight mb-4"
+            >
+              Nuestra Misión
+            </h2>
+
+            <p class="text-lg text-zinc-500 leading-relaxed">
+              Somos una empresa de litografía dedicada a transformar tus ideas
+              en impresiones de alta calidad, combinando creatividad y
+              tecnología avanzada para ofrecer soluciones personalizadas.
+            </p>
+          </div>
+
+          <!-- Vision Card -->
+          <div
+            class="relative bg-white rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-10 lg:p-12 border border-zinc-200/70 shadow-xl shadow-zinc-200/30 group hover:shadow-2xl hover:shadow-zinc-200/40 hover:border-brand-200/60 transition-all duration-500 overflow-hidden animate-fade-in-up"
+            style="animation-delay: 0.25s;"
+          >
+            <div
+              class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-brand-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            >
+            </div>
+
+            <div
+              class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-500/10 text-amber-600 mb-6 sm:mb-8"
+            >
+              <svg
+                class="w-7 h-7 sm:w-8 sm:h-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                ></path>
+              </svg>
+            </div>
+
+            <h2
+              class="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight mb-4"
+            >
+              Nuestra Visión
+            </h2>
+
+            <p class="text-lg text-zinc-500 leading-relaxed">
+              Con más de {yearsSince} años de experiencia en el sector gráfico, nos
+              enorgullece ser un referente en impresión y diseño, comprometidos con
+              la excelencia y la satisfacción de nuestros clientes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INNOVATION & GROWTH ========== -->
+    <section class="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-white">
+      <div
+        class="absolute inset-0 opacity-[0.015]"
+        style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0); background-size: 32px 32px;"
+      >
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <span
+            class="inline-block py-1 text-xs font-bold text-brand-600 mb-6 tracking-wider"
+          >
+            HOY
+          </span>
+
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight mb-6"
+          >
+            Innovación y<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-brand-600"
+              >Crecimiento Constante</span
+            >
+          </h2>
+
+          <p class="text-lg sm:text-xl text-zinc-500 leading-relaxed">
+            Hoy, seguimos ofreciendo soluciones de impresión y diseño gráfico de
+            alta calidad, adaptándonos a las necesidades de nuestros clientes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VALUES GRID ========== -->
+    <section class="py-16 sm:py-20 lg:py-28 relative bg-zinc-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight"
+          >
+            Nuestros valores,<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-amber-600"
+              >nuestra esencia</span
+            >
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6"
+        >
+          {
+            values.map((value, index) => (
+              <div
+                class="relative bg-white rounded-[1.75rem] sm:rounded-[2rem] p-6 sm:p-8 text-center border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-zinc-200/30 group transition-all duration-500 hover:-translate-y-1 animate-fade-in-up"
+                style={`animation-delay: ${0.1 + index * 0.1}s;`}
+              >
+                <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-brand-500/10 to-amber-500/10 text-brand-600 mb-5 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <Fragment set:html={value.icon} />
+                </div>
+                <h3 class="text-base sm:text-lg font-bold text-zinc-900">
+                  {value.title}
+                </h3>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="py-16 sm:py-20 lg:py-28 relative bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div
+          class="relative bg-zinc-900 rounded-[2.5rem] sm:rounded-[3rem] p-10 sm:p-14 lg:p-20 overflow-hidden shadow-2xl shadow-zinc-900/20"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-brand-500/10 to-transparent"
+          >
+          </div>
+          <div
+            class="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-brand-500/10 rounded-full blur-[60px]"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 bg-amber-500/5 rounded-full blur-[60px]"
+          >
+          </div>
+
+          <div class="relative z-10">
+            <h2
+              class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-6"
+            >
+              ¿Listo para transformar tus ideas en realidad?
+            </h2>
+            <p
+              class="text-lg text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed"
+            >
+              Contáctanos y descubre cómo podemos ayudarte con tus necesidades
+              de impresión.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="https://wa.me/573216426377"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-600 text-zinc-900 font-bold rounded-2xl hover:shadow-lg hover:shadow-brand-500/20 transition-all duration-300"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  ></path>
+                </svg>
+                Contáctanos por WhatsApp
+              </a>
+              <a
+                href="#contacto"
+                class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white border border-white/20 font-bold rounded-2xl hover:bg-white/15 hover:border-white/30 transition-all duration-300"
+              >
+                Más Información
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+</style>
