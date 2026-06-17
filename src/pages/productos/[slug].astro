@@ -16,7 +16,7 @@ export function getStaticPaths() {
 const { product } = Astro.props;
 ---
 
-<Layout title={product.title}>
+<Layout title={product.navLabel}>
   <Header />
   <main>
     <!-- Hero -->
@@ -172,7 +172,7 @@ const { product } = Astro.props;
                 >
                   <div
                     class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${product.color} rounded-t-2xl sm:rounded-t-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                  ></div>
+                  />
                   <h3 class="text-xl font-bold text-zinc-900 mb-3">
                     {sub.title}
                   </h3>
