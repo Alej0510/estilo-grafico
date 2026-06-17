@@ -164,7 +164,7 @@ const { product } = Astro.props;
                 Explora nuestras opciones
               </h2>
             </div>
-            <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
+            <div class="subcategories-grid grid sm:grid-cols-2 gap-6 lg:gap-8">
               {product.subcategories.map((sub, idx) => (
                 <div
                   class={`group relative bg-white rounded-2xl sm:rounded-3xl p-8 border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-zinc-200/30 hover:-translate-y-1 transition-all duration-500 animate-fade-in-up overflow-hidden`}
@@ -245,5 +245,13 @@ const { product } = Astro.props;
   .animate-fade-in-up {
     animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
+  }
+
+  @media (min-width: 640px) {
+    .subcategories-grid > *:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      max-width: 50%;
+    }
   }
 </style>
