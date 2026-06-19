@@ -5,13 +5,18 @@ export interface Subcategory {
   description: string;
 }
 
+export type ProductSlug =
+  | "etiquetas-empaques"
+  | "material-impreso"
+  | "gran-formato"
+  | "diseno-imagen";
+
 export interface Product {
-  slug: string;
+  slug: ProductSlug;
   title: string;
   navLabel: string;
   description: string;
   longDescription: string;
-  icon: string;
   color: string;
   accent: string;
   number: string;
@@ -31,12 +36,13 @@ export const products: Product[] = [
       "Descubre nuestras soluciones de etiquetas y empaquetado diseñadas para destacar tus productos. Ofrecemos una amplia gama de opciones personalizadas que combinan calidad y creatividad.",
     longDescription:
       "Descubre nuestras soluciones de etiquetas y empaquetado diseñadas para destacar tus productos. Ofrecemos una amplia gama de opciones personalizadas que combinan calidad y creatividad, desde bolsas y cajas hasta etiquetas adhesivas y en papel.",
-    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>`,
     color: "from-brand-500 to-brand-600",
     accent: "text-brand-600",
     number: "01",
-    ctaHeadline: "¿Interesado en nuestras soluciones de etiquetas y empaquetado?",
-    ctaSubtext: "Contáctanos hoy mismo y descubre cómo podemos ayudarte a destacar tus productos.",
+    ctaHeadline:
+      "¿Interesado en nuestras soluciones de etiquetas y empaquetado?",
+    ctaSubtext:
+      "Contáctanos hoy mismo y descubre cómo podemos ayudarte a destacar tus productos.",
     features: [
       "Bolsas personalizadas en diversos tamaños y diseños",
       "Cajas adaptadas a las necesidades de tu producto",
@@ -92,12 +98,12 @@ export const products: Product[] = [
       "Explora nuestras soluciones de material impreso diseñadas para satisfacer todas tus necesidades de comunicación visual. Ofrecemos una amplia gama de productos impresos con la mejor calidad y precisión.",
     longDescription:
       "Explora nuestras soluciones de material impreso diseñadas para satisfacer todas tus necesidades de comunicación visual. Ofrecemos una amplia gama de productos impresos con la mejor calidad y precisión, desde catálogos y libros hasta flyers y tarjetas de presentación.",
-    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
     color: "from-amber-500 to-orange-500",
     accent: "text-amber-600",
     number: "02",
     ctaHeadline: "¿Interesado en nuestras soluciones de material impreso?",
-    ctaSubtext: "Contáctanos hoy mismo y descubre cómo podemos ayudarte a comunicar tu mensaje de manera efectiva.",
+    ctaSubtext:
+      "Contáctanos hoy mismo y descubre cómo podemos ayudarte a comunicar tu mensaje de manera efectiva.",
     features: [
       "Catálogos personalizados con papeles de alta calidad",
       "Impresión de libros con acabados profesionales",
@@ -171,12 +177,13 @@ export const products: Product[] = [
       "Descubre nuestras soluciones de impresión a gran formato diseñadas para captar la atención y comunicar tu mensaje de manera efectiva. Ofrecemos una amplia gama de productos de alta calidad que destacan a gran escala.",
     longDescription:
       "Descubre nuestras soluciones de impresión a gran formato diseñadas para captar la atención y comunicar tu mensaje de manera efectiva. Ofrecemos una amplia gama de productos de alta calidad que destacan a gran escala, desde vallas y avisos luminosos hasta vinilos comerciales y vehiculares.",
-    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>`,
     color: "from-orange-500 to-yellow-400",
     accent: "text-orange-600",
     number: "03",
-    ctaHeadline: "¿Interesado en nuestras soluciones de impresión a gran formato?",
-    ctaSubtext: "Contáctanos hoy mismo y descubre cómo podemos ayudarte a captar la atención con impresiones de alta calidad.",
+    ctaHeadline:
+      "¿Interesado en nuestras soluciones de impresión a gran formato?",
+    ctaSubtext:
+      "Contáctanos hoy mismo y descubre cómo podemos ayudarte a captar la atención con impresiones de alta calidad.",
     features: [
       "Vallas publicitarias de alto impacto",
       "Avisos luminosos con tecnología LED",
@@ -244,12 +251,12 @@ export const products: Product[] = [
       "Descubre nuestros servicios de diseño e imagen, creados para dar vida a tus ideas y fortalecer la identidad de tu marca. Ofrecemos soluciones integrales que combinan creatividad y tecnología avanzada.",
     longDescription:
       "Descubre nuestros servicios de diseño e imagen, creados para dar vida a tus ideas y fortalecer la identidad de tu marca. Ofrecemos soluciones integrales que combinan creatividad y tecnología avanzada, desde logotipos e identidad corporativa hasta fotografía, video y diseño web.",
-    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`,
     color: "from-yellow-500 to-amber-600",
     accent: "text-yellow-600",
     number: "04",
     ctaHeadline: "¿Interesado en nuestros servicios de diseño e imagen?",
-    ctaSubtext: "Contáctanos hoy mismo y descubre cómo podemos ayudarte a dar vida a tus ideas y fortalecer la identidad de tu marca.",
+    ctaSubtext:
+      "Contáctanos hoy mismo y descubre cómo podemos ayudarte a dar vida a tus ideas y fortalecer la identidad de tu marca.",
     features: [
       "Creación de logotipos profesionales",
       "Identidad corporativa completa",

@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import type { ProductSlug } from "../../data/products";
+import GraphicDesign from "./GraphicDesign.astro";
+import LargeFormat from "./LargeFormat.astro";
+import Package from "./Package.astro";
+import PrintDocument from "./PrintDocument.astro";
+
+interface Props extends HTMLAttributes<"svg"> {
+  slug: ProductSlug;
+}
+
+const { slug, class: className, ...props } = Astro.props;
+
+const icons = {
+  "etiquetas-empaques": Package,
+  "material-impreso": PrintDocument,
+  "gran-formato": LargeFormat,
+  "diseno-imagen": GraphicDesign,
+} as const;
+
+const Icon = icons[slug];
+---
+
+{Icon && <Icon class={className} {...props} />}
