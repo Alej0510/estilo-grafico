@@ -5,9 +5,17 @@ type Direction = "left" | "right" | "up" | "down";
 
 interface Props extends HTMLAttributes<"svg"> {
   to?: Direction;
+  /** When false, skip built-in rotation so parent can control via CSS classes */
+  directional?: boolean;
 }
 
-const { to = "down", class: className, style, ...props } = Astro.props;
+const {
+  to = "down",
+  directional = true,
+  class: className,
+  style,
+  ...props
+} = Astro.props;
 
 const rotations: Record<Direction, string> = {
   down: "rotate(0deg)",
@@ -17,7 +25,11 @@ const rotations: Record<Direction, string> = {
 };
 
 const transformStyle = `transform: ${rotations[to]}; transform-origin: center;`;
-const combinedStyle = style ? `${transformStyle} ${style}` : transformStyle;
+const combinedStyle = directional
+  ? style
+    ? `${transformStyle} ${style}`
+    : transformStyle
+  : style;
 ---
 
 <svg
