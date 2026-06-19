@@ -14,19 +14,13 @@ const brands = [
 ---
 
 <section class="py-10 bg-white border-y border-zinc-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-    <p class="text-center text-xl font-medium text-zinc-900 tracking-widest">
-      Confían en nosotros
-    </p>
-  </div>
-
   <div class="relative overflow-hidden" id="brands-marquee-viewport">
     <div
-      class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"
+      class="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none"
     >
     </div>
     <div
-      class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"
+      class="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none"
     >
     </div>
 
@@ -80,13 +74,15 @@ const brands = [
 
       const template = list[1];
       const viewportWidth = viewport.clientWidth;
-      const shift = list[1].offsetLeft;
+      const shift = (list[1] as HTMLElement).offsetLeft;
       const minWidth = viewportWidth + shift;
 
       while (track.scrollWidth < minWidth) {
         const clone = template.cloneNode(true);
-        clone.setAttribute("aria-hidden", "true");
-        track.appendChild(clone);
+        if (clone instanceof HTMLElement) {
+          clone.setAttribute("aria-hidden", "true");
+          track.appendChild(clone);
+        }
       }
     };
 
@@ -96,7 +92,7 @@ const brands = [
       const list = segments();
       if (list.length < 2) return;
 
-      const shift = list[1].offsetLeft;
+      const shift = (list[1] as HTMLElement).offsetLeft;
       if (shift <= 0) return;
 
       track.style.setProperty("--marquee-shift", `${shift}px`);

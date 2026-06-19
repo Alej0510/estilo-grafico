@@ -1,5 +1,10 @@
 ---
-import { products } from "../data/products";
+import { products, WHATSAPP_URL } from "../data/products";
+import Arrow from "./icons/Arrow.astro";
+import Chevron from "./icons/Chevron.astro";
+import Close from "./icons/Close.astro";
+import Menu from "./icons/Menu.astro";
+import WhatsApp from "./icons/WhatsApp.astro";
 
 const navItems = [
   { label: "Inicio", href: "/" },
@@ -14,11 +19,13 @@ const dropdownItems = products.map((p) => ({
 ---
 
 <header
-  class="fixed w-full bg-[#212120]/95 backdrop-blur-md top-0 h-16 z-50 transition-all duration-500 border-b border-white/5"
+  class="fixed w-full bg-[#212120]/95 backdrop-blur-md top-0 h-16 z-40 transition-all duration-500 border-b border-white/5"
   id="header"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center h-16">
+    <div
+      class="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center h-16"
+    >
       <!-- Logo -->
       <div class="flex items-center justify-self-start">
         <a href="/" class="flex items-center gap-3 group">
@@ -37,9 +44,11 @@ const dropdownItems = products.map((p) => ({
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center justify-center gap-1 md:col-start-2">
+      <nav
+        class="hidden md:flex items-center justify-center gap-1 md:col-start-2"
+      >
         {
-          navItems.map((item) => (
+          navItems.map((item) =>
             item.dropdown ? (
               <div class="relative group">
                 <button
@@ -48,19 +57,23 @@ const dropdownItems = products.map((p) => ({
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span class="relative z-10 uppercase tracking-wider text-xs">{item.label}</span>
-                  <svg class="w-3 h-3 text-brand-500 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <span class="relative z-10 uppercase tracking-wider text-xs">
+                    {item.label}
+                  </span>
+                  <span class="inline-flex transition-transform duration-300 group-hover:rotate-180">
+                    <Chevron to="down" class="w-3 h-3 text-brand-500" />
+                  </span>
                   <div class="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100" />
-                  <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-600 transition-all duration-300 group-hover:w-6 rounded-full" />
+                  <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-brand-500 to-brand-600 transition-all duration-300 group-hover:w-6 rounded-full" />
                 </button>
 
-                <!-- Dropdown -->
                 <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div class="bg-[#212120] border border-white/10 rounded-2xl p-2 shadow-2xl shadow-black/40 min-w-[280px]">
                     {dropdownItems.map((di) => (
-                      <a href={di.href} class="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-xl text-sm transition-all duration-200 whitespace-nowrap">
+                      <a
+                        href={di.href}
+                        class="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-xl text-sm transition-all duration-200 whitespace-nowrap"
+                      >
                         {di.label}
                       </a>
                     ))}
@@ -76,43 +89,36 @@ const dropdownItems = products.map((p) => ({
                   {item.label}
                 </span>
                 <div class="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100" />
-                <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-600 transition-all duration-300 group-hover:w-6 rounded-full" />
+                <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-brand-500 to-brand-600 transition-all duration-300 group-hover:w-6 rounded-full" />
               </a>
-            )
-          ))
+            ),
+          )
         }
       </nav>
 
       <!-- CTA Button -->
       <div class="hidden md:flex items-center justify-self-end md:col-start-3">
         <a
-          href="https://wa.me/573216426377"
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           class="relative inline-flex items-center justify-center px-7 py-3 overflow-hidden rounded-full font-bold text-sm text-zinc-900 group"
         >
           <div
-            class="absolute inset-0 bg-gradient-to-r from-brand-500 to-brand-600 transition-transform duration-500 group-hover:scale-105"
+            class="absolute inset-0 bg-linear-to-r from-brand-500 to-brand-600 transition-transform duration-500 group-hover:scale-105"
           >
           </div>
           <div
-            class="absolute inset-0 bg-gradient-to-r from-brand-400 to-brand-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            class="absolute inset-0 bg-linear-to-r from-brand-400 to-brand-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           >
           </div>
           <span class="relative z-10 flex items-center gap-2">
             Contáctanos
-            <svg
-              class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+            <span
+              class="inline-flex transition-transform duration-300 group-hover:translate-x-0.5"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+              <Arrow to="right" class="w-4 h-4" />
+            </span>
           </span>
         </a>
       </div>
@@ -123,100 +129,97 @@ const dropdownItems = products.map((p) => ({
           type="button"
           class="inline-flex items-center justify-center p-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500 transition-all duration-300"
           aria-expanded="false"
+          aria-controls="mobile-menu"
           id="mobile-menu-button"
         >
-          <span class="sr-only">Open main menu</span>
-          <!-- Hamburger icon -->
-          <svg
+          <span class="sr-only">Abrir menú principal</span>
+          <Menu
             class="block h-5 w-5 transition-transform duration-300"
             id="icon-hamburger"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-          <!-- Close icon -->
-          <svg
+          />
+          <Close
             class="hidden h-5 w-5 transition-transform duration-300"
             id="icon-close"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
+          />
         </button>
       </div>
     </div>
   </div>
 </header>
 
-<!-- Mobile Menu Overlay -->
+<!-- Mobile Menu Overlay (above header) -->
 <div
-  class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+  class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
   id="mobile-overlay"
+  aria-hidden="true"
 >
 </div>
 
 <!-- Mobile Menu Panel -->
 <div
-  class="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-[#1a1a19] z-50 transform translate-x-full transition-transform duration-500 ease-out md:hidden"
+  class="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-[#1a1a19] z-60 transform translate-x-full transition-transform duration-500 ease-out md:hidden"
   id="mobile-menu"
+  aria-hidden="true"
 >
-  <!-- Close button inside panel -->
-  <div class="flex justify-end p-4">
+  <div
+    class="flex items-center justify-between gap-4 p-4 border-b border-white/10"
+  >
+    <a href="/" class="mobile-nav-link shrink-0">
+      <img
+        src="/BottomlessWhiteLogo.png"
+        alt="Estilo Gráfico"
+        class="h-10 w-auto"
+      />
+    </a>
     <button
       type="button"
-      class="p-2 rounded-xl text-white/60 hover:text-white hover:bg-white/10 transition-all duration-300"
+      class="p-2 rounded-xl text-white/60 hover:text-white hover:bg-white/10 transition-all duration-300 shrink-0"
       id="mobile-close-button"
+      aria-label="Cerrar menú"
     >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
+      <Close class="w-6 h-6" />
     </button>
   </div>
 
-  <div class="flex flex-col h-[calc(100%-80px)] px-6 pb-6">
-    <!-- Nav Links -->
+  <div class="flex flex-col h-[calc(100%-73px)] px-6 pb-6 overflow-y-auto">
     <nav class="flex flex-col gap-1">
       {
-        navItems.map((item) => (
+        navItems.map((item) =>
           item.dropdown ? (
-            <div>
-              <span class="flex items-center justify-between gap-4 px-4 py-4 text-white font-medium">
+            <div class="mobile-products-group">
+              <button
+                type="button"
+                id="mobile-products-toggle"
+                class="w-full flex items-center justify-between gap-4 px-4 py-4 text-white font-medium hover:bg-white/5 rounded-xl transition-all duration-300"
+                aria-expanded="true"
+                aria-controls="mobile-products-panel"
+              >
                 <span class="text-lg tracking-wide">{item.label}</span>
-                <svg class="w-4 h-4 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-              <div class="ml-4 pl-4 border-l border-white/10 space-y-1 mt-1">
-                {dropdownItems.map((di) => (
-                  <a href={di.href} class="mobile-nav-link block px-4 py-3 text-white/60 hover:text-white/90 hover:bg-white/5 rounded-xl text-sm transition-all duration-200">
-                    {di.label}
-                  </a>
-                ))}
+                <span
+                  id="mobile-products-chevron"
+                  class="inline-flex shrink-0 transition-transform duration-300 rotate-180"
+                >
+                  <Chevron to="down" class="w-4 h-4 text-brand-500" />
+                </span>
+              </button>
+
+              <div
+                id="mobile-products-panel"
+                class="grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out"
+                aria-hidden="false"
+              >
+                <div class="overflow-hidden">
+                  <div class="ml-4 pl-4 border-l border-white/10 space-y-1 pb-2 pt-1">
+                    {dropdownItems.map((di) => (
+                      <a
+                        href={di.href}
+                        class="mobile-nav-link block px-4 py-3 text-white/60 hover:text-white/90 hover:bg-white/5 rounded-xl text-sm transition-all duration-200"
+                      >
+                        {di.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           ) : (
@@ -226,19 +229,20 @@ const dropdownItems = products.map((p) => ({
             >
               <span class="text-lg tracking-wide">{item.label}</span>
             </a>
-          )
-        ))
+          ),
+        )
       }
     </nav>
 
-    <!-- Contact Info -->
-    <div class="mt-auto pt-6 border-t border-white/10">
-      <p class="text-zinc-500 text-sm mb-2">¿Prefieres llamarnos?</p>
+    <div class="mt-auto pt-6 border-t border-white/10 space-y-4">
       <a
-        href="tel:+573216426377"
-        class="text-white hover:text-brand-400 transition-colors font-medium"
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl bg-green-500/10 border border-green-500/20 hover:bg-green-500/15 hover:border-green-500/30 transition-all duration-300"
       >
-        +57 321 642 6377
+        <WhatsApp class="w-5 h-5 text-green-500 shrink-0" />
+        <span class="text-white font-medium">Escríbenos por WhatsApp</span>
       </a>
     </div>
   </div>
@@ -246,6 +250,52 @@ const dropdownItems = products.map((p) => ({
 
 <script>
   let isMenuOpen = false;
+
+  function setMenuIcons(open: boolean) {
+    const hamburger = document.getElementById("icon-hamburger");
+    const close = document.getElementById("icon-close");
+
+    hamburger?.classList.toggle("hidden", open);
+    hamburger?.classList.toggle("block", !open);
+    close?.classList.toggle("hidden", !open);
+    close?.classList.toggle("block", open);
+  }
+
+  function closeProductsDropdown() {
+    const panel = document.getElementById("mobile-products-panel");
+    const toggle = document.getElementById("mobile-products-toggle");
+    const chevron = document.getElementById("mobile-products-chevron");
+
+    panel?.classList.remove("grid-rows-[1fr]");
+    panel?.classList.add("grid-rows-[0fr]");
+    panel?.setAttribute("aria-hidden", "true");
+    toggle?.setAttribute("aria-expanded", "false");
+    chevron?.classList.remove("rotate-180");
+  }
+
+  function openProductsDropdown() {
+    const panel = document.getElementById("mobile-products-panel");
+    const toggle = document.getElementById("mobile-products-toggle");
+    const chevron = document.getElementById("mobile-products-chevron");
+
+    panel?.classList.remove("grid-rows-[0fr]");
+    panel?.classList.add("grid-rows-[1fr]");
+    panel?.setAttribute("aria-hidden", "false");
+    toggle?.setAttribute("aria-expanded", "true");
+    chevron?.classList.add("rotate-180");
+  }
+
+  function toggleProductsDropdown() {
+    const toggle = document.getElementById("mobile-products-toggle");
+    const isOpen = toggle?.getAttribute("aria-expanded") === "true";
+
+    if (isOpen) {
+      closeProductsDropdown();
+      return;
+    }
+
+    openProductsDropdown();
+  }
 
   function closeMenu() {
     isMenuOpen = false;
@@ -255,10 +305,13 @@ const dropdownItems = products.map((p) => ({
 
     mobileMenu?.classList.add("translate-x-full");
     mobileMenu?.classList.remove("translate-x-0");
+    mobileMenu?.setAttribute("aria-hidden", "true");
     mobileOverlay?.classList.add("opacity-0", "pointer-events-none");
     mobileOverlay?.classList.remove("opacity-100");
+    mobileOverlay?.setAttribute("aria-hidden", "true");
     menuButton?.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
+    setMenuIcons(false);
   }
 
   function openMenu() {
@@ -269,10 +322,13 @@ const dropdownItems = products.map((p) => ({
 
     mobileMenu?.classList.remove("translate-x-full");
     mobileMenu?.classList.add("translate-x-0");
+    mobileMenu?.setAttribute("aria-hidden", "false");
     mobileOverlay?.classList.remove("opacity-0", "pointer-events-none");
     mobileOverlay?.classList.add("opacity-100");
+    mobileOverlay?.setAttribute("aria-hidden", "false");
     menuButton?.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
+    setMenuIcons(true);
   }
 
   window.addEventListener("scroll", () => {
@@ -295,11 +351,22 @@ const dropdownItems = products.map((p) => ({
       return;
     }
 
+    if (target.closest("#mobile-products-toggle")) {
+      toggleProductsDropdown();
+      return;
+    }
+
     if (
       target.closest("#mobile-close-button") ||
       target.closest("#mobile-overlay") ||
       target.closest(".mobile-nav-link")
     ) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isMenuOpen) {
       closeMenu();
     }
   });

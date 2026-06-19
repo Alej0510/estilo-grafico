@@ -1,0 +1,49 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Direction = "left" | "right" | "up" | "down";
+
+interface Props extends HTMLAttributes<"svg"> {
+  to?: Direction;
+  /** When false, skip built-in rotation so parent can control via CSS classes */
+  directional?: boolean;
+}
+
+const {
+  to = "down",
+  directional = true,
+  class: className,
+  style,
+  ...props
+} = Astro.props;
+
+const rotations: Record<Direction, string> = {
+  down: "rotate(0deg)",
+  up: "rotate(180deg)",
+  left: "rotate(90deg)",
+  right: "rotate(-90deg)",
+};
+
+const transformStyle = `transform: ${rotations[to]}; transform-origin: center;`;
+const combinedStyle = directional
+  ? style
+    ? `${transformStyle} ${style}`
+    : transformStyle
+  : style;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  color="currentColor"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  {...props}
+  class={className}
+  style={combinedStyle}
+>
+  <path d="M19 9l-7 7-7-7"></path>
+</svg>
