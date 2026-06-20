@@ -1,11 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import ContactBanner from "../components/ContactBanner.astro";
-import Footer from "../components/Footer.astro";
 import Arrow from "../components/icons/Arrow.astro";
-import Chevron from "../components/icons/Chevron.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
 import BadgeCheck from "../components/icons/BadgeCheck.astro";
 import Sparkles from "../components/icons/Sparkles.astro";
 import Users from "../components/icons/Users.astro";
@@ -14,6 +12,7 @@ import Heart from "../components/icons/Heart.astro";
 import Eye from "../components/icons/Eye.astro";
 import aboutUs1 from "../assets/about-us-1.webp";
 import aboutUs2 from "../assets/about-us-2.webp";
+import { PAGE_SEO } from "../data/site";
 
 const year = new Date().getFullYear();
 const yearsSince = year - 2007;
@@ -58,8 +57,11 @@ const values = [
 ];
 ---
 
-<Layout title="Nosotros">
-  <Header />
+<Layout
+  title={PAGE_SEO.nosotros.title}
+  description={PAGE_SEO.nosotros.description}
+  path="/nosotros"
+>
   <main>
     <!-- ========== HERO ========== -->
     <section class="relative pt-32 pb-8 sm:pb-12 lg:pb-16 overflow-hidden">
@@ -84,16 +86,14 @@ const values = [
       </div>
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Breadcrumb -->
-        <nav
-          class="flex items-center gap-2 text-sm text-zinc-400 mb-8 reveal"
+        <Breadcrumb
+          class="mb-8 reveal"
           style="animation-delay: 0.05s;"
-          aria-label="Ruta de navegación"
-        >
-          <a href="/" class="hover:text-brand-600 transition-colors">Inicio</a>
-          <Chevron to="right" class="w-4 h-4" />
-          <span class="text-zinc-500">Nosotros</span>
-        </nav>
+          items={[
+            { label: "Inicio", href: "/" },
+            { label: "Nosotros" },
+          ]}
+        />
 
         <!-- Hero card -->
         <div
@@ -379,7 +379,6 @@ const values = [
     headline="¿Listo para transformar tus ideas en realidad?"
     subtext="Contáctanos y descubre cómo podemos ayudarte con tus necesidades de impresión y diseño."
   />
-  <Footer />
 </Layout>
 
 <style>

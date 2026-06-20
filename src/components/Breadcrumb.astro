@@ -1,0 +1,96 @@
+---
+import Chevron from "./icons/Chevron.astro";
+
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+  /** Shorter label for small screens (e.g. product navLabel) */
+  shortLabel?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+  class?: string;
+  style?: string;
+}
+
+const { items, class: className, style } = Astro.props;
+---
+
+<nav
+  aria-label="Ruta de navegación"
+  class:list={["min-w-0", className]}
+  style={style}
+>
+  <ol
+    class="flex list-none items-center gap-1 sm:gap-2 p-0 m-0 text-sm text-zinc-400 min-w-0 flex-nowrap overflow-hidden"
+  >
+    {
+      items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        const isMiddle = index > 0 && index < items.length - 1;
+        const collapseTrail = items.length > 2;
+
+        if (isMiddle && collapseTrail) {
+          return (
+            <>
+              <li class="shrink-0 text-zinc-300" aria-hidden="true">
+                <Chevron to="right" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </li>
+              <li class="hidden sm:list-item shrink-0">
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    class="hover:text-brand-600 transition-colors whitespace-nowrap"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <span class="text-zinc-500 whitespace-nowrap">
+                    {item.label}
+                  </span>
+                )}
+              </li>
+              {index === 1 && (
+                <li class="sm:hidden shrink-0 text-zinc-400" aria-hidden="true">
+                  …
+                </li>
+              )}
+            </>
+          );
+        }
+
+        return (
+          <>
+            {index > 0 && (
+              <li class="shrink-0 text-zinc-300" aria-hidden="true">
+                <Chevron to="right" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </li>
+            )}
+            <li class:list={[isLast && "min-w-0 truncate"]}>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  class="hover:text-brand-600 transition-colors whitespace-nowrap"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <span class="text-zinc-500 block truncate" title={item.label}>
+                  {item.shortLabel ? (
+                    <>
+                      <span class="sm:hidden">{item.shortLabel}</span>
+                      <span class="hidden sm:inline">{item.label}</span>
+                    </>
+                  ) : (
+                    item.label
+                  )}
+                </span>
+              )}
+            </li>
+          </>
+        );
+      })
+    }
+  </ol>
+</nav>

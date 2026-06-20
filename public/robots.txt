@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://estilo-grafico.com/sitemap-index.xml
