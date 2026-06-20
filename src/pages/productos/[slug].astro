@@ -17,6 +17,22 @@ import packagingImage from "../../assets/packaging-design.webp";
 import printQualityImage from "../../assets/print-quality.webp";
 import adBoardImage from "../../assets/ad-board.webp";
 import graphicDesignImage from "../../assets/graphic-design.webp";
+import bolsasImage from "../../assets/bolsas.jpg";
+import cajasImage from "../../assets/cajas.jpg";
+import etiquetasStickerImage from "../../assets/etiquetas-sticker.jpg";
+import etiquetasPapelImage from "../../assets/etiquetas-papel.jpg";
+import catalogoImage from "../../assets/catalogo.jpg";
+import libroImage from "../../assets/libro.jpg";
+import brochureImage from "../../assets/brochure.jpg";
+import carpetaImage from "../../assets/carpeta.jpg";
+import flyerImage from "../../assets/flyer.jpg";
+import tarjetaPresentacionImage from "../../assets/tarjeta-presentacion.jpg";
+import aficheImage from "../../assets/afiche.jpg";
+import bannerImage from "../../assets/banner.jpg";
+import lonaImage from "../../assets/lona.jpg";
+import viniloImage from "../../assets/vinilo.jpg";
+import fotografiaImage from "../../assets/fotografia.jpg";
+import websiteImage from "../../assets/website.jpg";
 
 export function getStaticPaths() {
   return products.map((product) => ({
@@ -47,6 +63,84 @@ const serviceImages: Record<string, { src: ImageMetadata; alt: string }> = {
 };
 
 const productImage = serviceImages[product.slug];
+
+const subcategoryImages: Record<
+  string,
+  Record<string, { src: ImageMetadata; alt: string }>
+> = {
+  "etiquetas-empaques": {
+    Bolsas: {
+      src: bolsasImage,
+      alt: "Bolsas personalizadas en Medellín — Estilo Gráfico",
+    },
+    Cajas: {
+      src: cajasImage,
+      alt: "Cajas personalizadas en Medellín — Estilo Gráfico",
+    },
+    "Etiquetas Adhesivas": {
+      src: etiquetasStickerImage,
+      alt: "Etiquetas adhesivas personalizadas en Medellín — Estilo Gráfico",
+    },
+    "Etiquetas en Papel": {
+      src: etiquetasPapelImage,
+      alt: "Etiquetas en papel personalizadas en Medellín — Estilo Gráfico",
+    },
+  },
+  "material-impreso": {
+    Catálogos: {
+      src: catalogoImage,
+      alt: "Catálogos impresos personalizados en Medellín — Estilo Gráfico",
+    },
+    Libros: {
+      src: libroImage,
+      alt: "Impresión de libros en Medellín — Estilo Gráfico",
+    },
+    "Brochures y Plegables": {
+      src: brochureImage,
+      alt: "Brochures y plegables impresos personalizados en Medellín — Estilo Gráfico",
+    },
+    Carpetas: {
+      src: carpetaImage,
+      alt: "Carpetas personalizadas en Medellín — Estilo Gráfico",
+    },
+    Flyers: {
+      src: flyerImage,
+      alt: "Flyers impresos personalizados en Medellín — Estilo Gráfico",
+    },
+    "Tarjetas de Presentación": {
+      src: tarjetaPresentacionImage,
+      alt: "Tarjetas de presentación personalizadas en Medellín — Estilo Gráfico",
+    },
+  },
+  "diseno-imagen": {
+    Afiches: {
+      src: aficheImage,
+      alt: "Afiches a gran formato en Medellín — Estilo Gráfico",
+    },
+    Banners: {
+      src: bannerImage,
+      alt: "Banners personalizados en Medellín — Estilo Gráfico",
+    },
+    Lonas: {
+      src: lonaImage,
+      alt: "Lonas impresas a gran formato en Medellín — Estilo Gráfico",
+    },
+    Vinilos: {
+      src: viniloImage,
+      alt: "Vinilos a gran formato en Medellín — Estilo Gráfico",
+    },
+    "Fotografía y Video": {
+      src: fotografiaImage,
+      alt: "Fotografía y video profesional en Medellín — Estilo Gráfico",
+    },
+    "Diseño de página web": {
+      src: websiteImage,
+      alt: "Diseño de páginas web en Medellín — Estilo Gráfico",
+    },
+  },
+};
+
+const productSubcategoryImages = subcategoryImages[product.slug];
 
 const brandGradient = "from-brand-500 to-brand-600";
 
@@ -181,28 +275,45 @@ const structuredData = [
               </h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {product.subcategories.map((sub, idx) => (
-                <div
-                  class="group relative flex flex-col bg-white rounded-2xl sm:rounded-3xl border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-zinc-200/30 hover:-translate-y-1 transition-all duration-500 animate-fade-in-up overflow-hidden"
-                  style={`animation-delay: ${0.15 + idx * 0.1}s;`}
-                >
+              {product.subcategories.map((sub, idx) => {
+                const subImage = productSubcategoryImages?.[sub.title];
+                return (
                   <div
-                    class="relative aspect-3/2 bg-zinc-200 shrink-0"
-                    role="img"
-                    aria-label={`Imagen de ${sub.title}`}
+                    class="group relative flex flex-col bg-white rounded-2xl sm:rounded-3xl border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-zinc-200/30 hover:-translate-y-1 transition-all duration-500 animate-fade-in-up overflow-hidden"
+                    style={`animation-delay: ${0.15 + idx * 0.1}s;`}
                   >
-                    <div class="absolute inset-0 ring-1 ring-inset ring-black/5" />
+                    <div class="relative aspect-3/2 bg-zinc-200 shrink-0 overflow-hidden">
+                      {subImage ? (
+                        <Image
+                          src={subImage.src}
+                          alt={subImage.alt}
+                          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                          widths={[400, 640, 800]}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div
+                          class="absolute inset-0"
+                          role="img"
+                          aria-label={`Imagen de ${sub.title}`}
+                        />
+                      )}
+                      <div class="absolute inset-0 bg-linear-to-t from-zinc-900/10 via-transparent to-transparent" />
+                      <div class="absolute inset-0 ring-1 ring-inset ring-black/5" />
+                    </div>
+                    <div class="p-6 sm:p-8">
+                      <h3 class="text-xl font-bold text-zinc-900 mb-3">
+                        {sub.title}
+                      </h3>
+                      <p class="text-zinc-500 leading-relaxed">
+                        {sub.description}
+                      </p>
+                    </div>
                   </div>
-                  <div class="p-6 sm:p-8">
-                    <h3 class="text-xl font-bold text-zinc-900 mb-3">
-                      {sub.title}
-                    </h3>
-                    <p class="text-zinc-500 leading-relaxed">
-                      {sub.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

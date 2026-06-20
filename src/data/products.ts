@@ -53,7 +53,7 @@ export const products: Product[] = [
       {
         title: "Bolsas",
         description:
-          "Nuestras bolsas personalizadas son ideales para empaquetar productos pequeños con estilo y seguridad. Disponibles en diversos tamaños y diseños.",
+          "Nuestras bolsas personalizadas son ideales para empaquetar productos con estilo y seguridad. Disponibles en diversos tamaños y diseños.",
       },
       {
         title: "Cajas",
@@ -107,9 +107,8 @@ export const products: Product[] = [
     features: [
       "Catálogos personalizados con papeles de alta calidad",
       "Impresión de libros con acabados profesionales",
-      "Brochures informativos en diferentes tamaños y formatos",
+      "Brochures y plegables informativos en diferentes tamaños y formatos",
       "Carpetas personalizadas que combinan funcionalidad y diseño",
-      "Plegables impresos de alta calidad",
       "Flyers con colores vibrantes y materiales duraderos",
       "Tarjetas de presentación personalizadas",
     ],
@@ -117,37 +116,32 @@ export const products: Product[] = [
       {
         title: "Catálogos",
         description:
-          "Nuestros catálogos personalizados son perfectos para mostrar tus productos y servicios con detalle y elegancia. Utilizamos papeles de alta calidad y técnicas de impresión avanzadas para asegurar que cada página refleje profesionalismo y atractivo visual.",
+          "Catálogos personalizados en papel de alta calidad para presentar tus productos y servicios con un acabado profesional.",
       },
       {
         title: "Libros",
         description:
-          "Ofrecemos servicios de impresión de libros con acabados profesionales, ideales para autores y editoriales que buscan calidad y durabilidad. Desde novelas hasta manuales técnicos, garantizamos una presentación impecable y resistente al uso.",
+          "Impresión de libros con acabados profesionales para autores y editoriales, desde novelas hasta manuales técnicos.",
       },
       {
-        title: "Brochures",
+        title: "Brochures y Plegables",
         description:
-          "Creamos brochures informativos y atractivos que comunican tu mensaje de manera efectiva. Disponibles en diferentes tamaños y formatos, nuestros brochures son perfectos para presentaciones corporativas, eventos y promociones.",
+          "Brochures y plegables informativos en varios tamaños y formatos, ideales para presentaciones corporativas, eventos y promociones.",
       },
       {
         title: "Carpetas",
         description:
-          "Nuestras carpetas personalizadas son ideales para presentaciones y almacenamiento de documentos, combinando funcionalidad y diseño. Ofrecemos una variedad de materiales y acabados para asegurar que tus carpetas reflejen la identidad de tu marca.",
-      },
-      {
-        title: "Plegables",
-        description:
-          "Ofrecemos plegables impresos de alta calidad, perfectos para folletos informativos y promocionales. Nuestros plegables están diseñados para ser fáciles de manejar y atractivos, asegurando que tu mensaje llegue de manera clara y efectiva.",
+          "Carpetas personalizadas que combinan funcionalidad y diseño para presentaciones y archivo de documentos.",
       },
       {
         title: "Flyers",
         description:
-          "Los flyers impresos son una herramienta eficaz para promocionar eventos y ofertas especiales. Disponibles en varios tamaños y diseños, nuestros flyers están impresos con colores vibrantes y materiales duraderos para captar la atención de tu audiencia.",
+          "Flyers con colores vibrantes y materiales duraderos para promocionar eventos y ofertas especiales.",
       },
       {
         title: "Tarjetas de Presentación",
         description:
-          "Nuestras tarjetas de presentación personalizadas son ideales para causar una excelente primera impresión. Disponibles en diversos acabados y materiales, nuestras tarjetas combinan diseño elegante y calidad superior para representar tu marca de manera profesional.",
+          "Tarjetas de presentación personalizadas en diversos acabados y materiales para una primera impresión profesional.",
       },
     ],
     faqs: [
@@ -262,45 +256,39 @@ export const products: Product[] = [
       "Identidad corporativa completa",
       "Diseño de materiales promocionales",
       "Campañas visuales integrales",
-      "Fotografía profesional de alta calidad",
-      "Videos promocionales y corporativos",
+      "Fotografía y video profesional para productos, eventos y marca",
       "Diseño de página web atractivo y funcional",
     ],
     subcategories: [
       {
         title: "Afiches",
         description:
-          "Nuestros afiches a gran formato son ideales para publicidad y eventos, garantizando una impresión de alta calidad y durabilidad.",
+          "Afiches a gran formato ideales para publicidad y eventos, con impresión de alta calidad y gran durabilidad.",
       },
       {
         title: "Banners",
         description:
-          "Ofrecemos banners personalizados que son perfectos para promociones y señalización, disponibles en diversos tamaños y materiales.",
+          "Banners personalizados para promociones y señalización, disponibles en diversos tamaños y materiales.",
       },
       {
         title: "Lonas",
         description:
-          "Nuestras lonas impresas son resistentes y versátiles, ideales para exteriores e interiores, con una calidad de impresión excepcional.",
+          "Lonas impresas resistentes y versátiles para exteriores e interiores, con calidad de impresión excepcional.",
       },
       {
         title: "Vinilos",
         description:
-          "Los vinilos a gran formato son perfectos para decoración y publicidad, ofreciendo una excelente adherencia y durabilidad.",
+          "Vinilos a gran formato para decoración y publicidad, con excelente adherencia y durabilidad.",
       },
       {
-        title: "Fotografía profesional",
+        title: "Fotografía y Video",
         description:
-          "Captura la esencia de tu marca con nuestra fotografía profesional. Ya sea para productos, eventos o retratos corporativos, nuestras imágenes de alta calidad te ayudarán a destacar y a comunicar tu mensaje de manera efectiva. Confía en nosotros para obtener fotos que impresionen y atraigan a tu audiencia.",
-      },
-      {
-        title: "Videos promocionales y corporativos",
-        description:
-          "Los videos son una herramienta poderosa para contar la historia de tu marca. Ofrecemos servicios de producción de videos promocionales y corporativos que capturan la atención y transmiten tu mensaje de manera clara y atractiva. Desde la conceptualización hasta la edición final, nos encargamos de todo el proceso para que puedas enfocarte en tu negocio.",
+          "Fotografía y video profesional para productos, eventos y contenido corporativo que comunica tu marca con impacto.",
       },
       {
         title: "Diseño de página web",
         description:
-          "Una página web bien diseñada es esencial para cualquier negocio en la era digital. Nuestro equipo de expertos en diseño web creará un sitio atractivo, funcional y optimizado para dispositivos móviles que refleje la identidad de tu marca y mejore la experiencia del usuario. Aumenta tu presencia en línea y atrae a más clientes con una página web profesional.",
+          "Diseño web atractivo, funcional y optimizado para móviles que refleja la identidad de tu marca.",
       },
     ],
     faqs: [
