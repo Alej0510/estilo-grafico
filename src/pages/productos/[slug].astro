@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import ContactBanner from "../../components/ContactBanner.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import ServiceIcon from "../../components/icons/ServiceIcon.astro";
-import Chevron from "../../components/icons/Chevron.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import Arrow from "../../components/icons/Arrow.astro";
 import { products } from "../../data/products";
 import { productSeoDescription, productSeoTitle } from "../../data/site";
@@ -193,19 +193,15 @@ const structuredData = [
       </div>
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav
-          class="flex items-center gap-2 text-sm text-zinc-400 mb-8 animate-fade-in-up"
+        <Breadcrumb
+          class="mb-8 animate-fade-in-up"
           style="animation-delay: 0.1s;"
-          aria-label="Ruta de navegación"
-        >
-          <a href="/" class="hover:text-brand-600 transition-colors">Inicio</a>
-          <Chevron to="right" class="w-4 h-4" />
-          <a href="/#productos" class="hover:text-brand-600 transition-colors"
-            >Productos</a
-          >
-          <Chevron to="right" class="w-4 h-4" />
-          <span class="text-zinc-500">{product.title}</span>
-        </nav>
+          items={[
+            { label: "Inicio", href: "/" },
+            { label: "Productos", href: "/#productos" },
+            { label: product.title, shortLabel: product.navLabel },
+          ]}
+        />
 
         <div
           class="relative bg-white rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3rem] border border-zinc-200/70 shadow-2xl shadow-zinc-200/40 overflow-hidden animate-fade-in-up"
