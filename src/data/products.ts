@@ -1,4 +1,4 @@
-export const WHATSAPP_URL = "https://wa.me/573216426377";
+export { WHATSAPP_URL } from "./site";
 
 export interface Subcategory {
   title: string;

@@ -1,17 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import BrandsSlider from "../components/BrandsSlider.astro";
 import Services from "../components/Services.astro";
 import FaqSection from "../components/FaqSection.astro";
 import ContactBanner from "../components/ContactBanner.astro";
-import Footer from "../components/Footer.astro";
 import { generalFaqs } from "../data/products";
+import { PAGE_SEO } from "../data/site";
+import { faqSchema, websiteSchema } from "../lib/structured-data";
 ---
 
-<Layout title="Estilo gráfico">
-  <Header />
+<Layout
+  title={PAGE_SEO.home.title}
+  description={PAGE_SEO.home.description}
+  path="/"
+  structuredData={[websiteSchema(), faqSchema(generalFaqs)]}
+>
   <main>
     <Hero />
     <BrandsSlider />
@@ -19,5 +23,4 @@ import { generalFaqs } from "../data/products";
     <FaqSection faqs={generalFaqs} />
   </main>
   <ContactBanner />
-  <Footer />
 </Layout>
