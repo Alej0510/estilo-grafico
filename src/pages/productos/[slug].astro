@@ -33,6 +33,11 @@ import lonaImage from "../../assets/lona.jpg";
 import viniloImage from "../../assets/vinilo.jpg";
 import fotografiaImage from "../../assets/fotografia.jpg";
 import websiteImage from "../../assets/website.jpg";
+import vallaImage from "../../assets/valla.jpg";
+import avisoLuminosoImage from "../../assets/aviso-luminoso.jpg";
+import senalizacionImage from "../../assets/senalizacion.jpg";
+import viniloComercialImage from "../../assets/vinilo-comercial.jpg";
+import viniloVehicularImage from "../../assets/vinilo-vehicular.jpg";
 
 export function getStaticPaths() {
   return products.map((product) => ({
@@ -66,7 +71,7 @@ const productImage = serviceImages[product.slug];
 
 const subcategoryImages: Record<
   string,
-  Record<string, { src: ImageMetadata; alt: string }>
+  Record<string, { src: ImageMetadata | string; alt: string }>
 > = {
   "etiquetas-empaques": {
     Bolsas: {
@@ -136,6 +141,28 @@ const subcategoryImages: Record<
     "Diseño de página web": {
       src: websiteImage,
       alt: "Diseño de páginas web en Medellín — Estilo Gráfico",
+    },
+  },
+  "gran-formato": {
+    Vallas: {
+      src: vallaImage,
+      alt: "Vallas publicitarias en Medellín — Estilo Gráfico",
+    },
+    "Avisos luminosos y Neoflex": {
+      src: avisoLuminosoImage,
+      alt: "Avisos luminosos LED y Neoflex en Medellín — Estilo Gráfico",
+    },
+    Señalización: {
+      src: senalizacionImage,
+      alt: "Señalización comercial en Medellín — Estilo Gráfico",
+    },
+    "Vinilo comercial": {
+      src: viniloComercialImage,
+      alt: "Vinilo comercial para negocios en Medellín — Estilo Gráfico",
+    },
+    "Vinilo vehicular": {
+      src: viniloVehicularImage,
+      alt: "Vinilo vehicular en Medellín — Estilo Gráfico",
     },
   },
 };
@@ -280,15 +307,26 @@ const structuredData = [
                   >
                     <div class="relative aspect-3/2 bg-zinc-200 shrink-0 overflow-hidden">
                       {subImage ? (
-                        <Image
-                          src={subImage.src}
-                          alt={subImage.alt}
-                          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                          widths={[400, 640, 800]}
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          loading="lazy"
-                          decoding="async"
-                        />
+                        typeof subImage.src === "string" ? (
+                          <img
+                            src={subImage.src}
+                            alt={subImage.alt}
+                            class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy"
+                            decoding="async"
+                            referrerpolicy="no-referrer"
+                          />
+                        ) : (
+                          <Image
+                            src={subImage.src}
+                            alt={subImage.alt}
+                            class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                            widths={[400, 640, 800]}
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        )
                       ) : (
                         <div
                           class="absolute inset-0"

@@ -180,8 +180,7 @@ export const products: Product[] = [
       "Contáctanos hoy mismo y descubre cómo podemos ayudarte a captar la atención con impresiones de alta calidad.",
     features: [
       "Vallas publicitarias de alto impacto",
-      "Avisos luminosos con tecnología LED",
-      "Avisos luminosos Neoflex flexibles y modernos",
+      "Avisos luminosos LED y Neoflex para diseños modernos y visibles día y noche",
       "Señalización personalizada para tu negocio",
       "Vinilo comercial versátil y económico",
       "Vinilo vehicular para marketing móvil",
@@ -190,32 +189,27 @@ export const products: Product[] = [
       {
         title: "Vallas",
         description:
-          "Las vallas publicitarias son una herramienta poderosa para captar la atención de tu audiencia. Con nuestras vallas de alta calidad, tu mensaje será visible desde lejos, garantizando una exposición continua y efectiva. Ideales para campañas publicitarias de gran impacto.",
+          "Vallas publicitarias de alto impacto para campañas visibles desde lejos con exposición continua y efectiva.",
       },
       {
-        title: "Avisos luminosos",
+        title: "Avisos luminosos y Neoflex",
         description:
-          "Los avisos luminosos son perfectos para destacar tu negocio, incluso en la oscuridad. Utilizamos tecnología LED de última generación para asegurar que tu marca brille con intensidad y claridad, atrayendo a clientes potenciales tanto de día como de noche.",
-      },
-      {
-        title: "Avisos luminosos Neoflex",
-        description:
-          "Los avisos luminosos Neoflex combinan la flexibilidad del neón con la eficiencia del LED. Estos avisos son ideales para crear diseños únicos y llamativos que capturan la esencia de tu marca, ofreciendo una solución moderna y duradera para tu señalización.",
+          "Avisos luminosos LED y Neoflex que combinan tecnología moderna y diseños únicos para que tu marca destaque día y noche.",
       },
       {
         title: "Señalización",
         description:
-          "La señalización adecuada es esencial para guiar a tus clientes y mejorar la experiencia en tu negocio. Ofrecemos una amplia gama de opciones de señalización personalizadas que no solo cumplen con su función informativa, sino que también refuerzan la identidad visual de tu marca.",
+          "Señalización personalizada que guía a tus clientes y refuerza la identidad visual de tu negocio.",
       },
       {
         title: "Vinilo comercial",
         description:
-          "El vinilo comercial es una opción versátil y económica para promocionar tu negocio. Desde escaparates hasta paredes interiores, nuestros vinilos de alta calidad pueden transformar cualquier superficie en un espacio publicitario atractivo y profesional.",
+          "Vinilo comercial versátil para escaparates, paredes y superficies interiores con acabado profesional.",
       },
       {
         title: "Vinilo vehicular",
         description:
-          "Convierte tu vehículo en una herramienta de marketing móvil con nuestros vinilos vehiculares. Diseñados para resistir las condiciones más exigentes, estos vinilos garantizan que tu mensaje llegue a una audiencia amplia mientras te desplazas por la ciudad.",
+          "Vinilo vehicular resistente que convierte tu vehículo en publicidad móvil mientras recorres la ciudad.",
       },
     ],
     faqs: [
