@@ -8,6 +8,7 @@ import JsonLd from "../components/JsonLd.astro";
 import { ClientRouter } from "astro:transitions";
 import { SITE } from "../data/site";
 import { localBusinessSchema } from "../lib/structured-data";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title: string;
@@ -55,6 +56,7 @@ const jsonLd = [localBusinessSchema(), ...structuredData];
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <Analytics />
   </head>
   <body
     class="bg-zinc-50 text-zinc-800 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-zinc-900"
