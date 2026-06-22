@@ -32,31 +32,20 @@ const featuredProduct = products[3];
 const brandGradient = "from-brand-500 to-brand-600";
 
 const cardBase =
-  "group relative bg-white rounded-2xl lg:rounded-3xl hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500 border border-zinc-100 hover:border-brand-200/50 overflow-hidden";
+  "group relative bg-white rounded-2xl lg:rounded-3xl hover:shadow-2xl hover:shadow-black/25 transition-all duration-500 border border-zinc-100 hover:border-brand-200/50 overflow-hidden";
 ---
 
 <section id="productos" class="py-10 lg:py-18 relative overflow-hidden">
-  <!-- Background -->
-  <div
-    class="absolute inset-0 bg-linear-to-b from-white via-zinc-50/50 to-white"
-  >
-  </div>
-  <div
-    class="absolute inset-0 opacity-[0.02]"
-    style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0); background-size: 40px 40px;"
-  >
-  </div>
-
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 mb-4">
-        <h2 class="text-xl font-medium text-brand-700 tracking-wide">
+        <h2 class="text-xl font-medium text-brand-300 tracking-wide">
           Nuestros Servicios
         </h2>
       </div>
       <h2
-        class="text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-900 leading-tight"
+        class="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight"
       >
         Impresión y diseño que
         <span
@@ -65,7 +54,7 @@ const cardBase =
           elevan tu marca</span
         >
       </h2>
-      <p class="mt-6 text-lg text-zinc-500 max-w-2xl mx-auto leading-relaxed">
+      <p class="mt-6 text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
         Litografía, impresión y diseño gráfico en Medellín: servicios
         personalizados para satisfacer todas tus necesidades de comunicación
         visual.

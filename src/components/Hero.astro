@@ -3,27 +3,15 @@ import { Image } from "astro:assets";
 import { WHATSAPP_URL } from "../data/products";
 import Arrow from "./icons/Arrow.astro";
 import heroImage from "../assets/hero.webp";
-import heroBg from "../assets/hero-bg.jpeg";
 ---
 
 <section
   class="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-28 lg:pb-28"
 >
-  <!-- Background -->
-  <div class="absolute inset-0 z-0">
-    <Image
-      src={heroBg}
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="eager"
-    />
-    <div class="absolute inset-0 bg-black/20"></div>
-  </div>
-
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <!-- ========== MAIN HERO BOX ========== -->
     <div
-      class="relative bg-white rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3.5rem] border border-zinc-200/70 shadow-2xl shadow-zinc-200/40 overflow-hidden"
+      class="relative bg-white rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3.5rem] border border-zinc-200/70 shadow-2xl shadow-black/20 overflow-hidden"
     >
       <div
         class="absolute inset-0 bg-linear-to-br from-zinc-50/80 via-white to-zinc-50/40"
@@ -116,7 +104,7 @@ import heroBg from "../assets/hero-bg.jpeg";
 
     <!-- ========== QUÉ HACEMOS BANNER ========== -->
     <div
-      class="relative mt-3 sm:mt-4 lg:mt-6 rounded-3xl sm:rounded-4xl lg:rounded-[2.5rem] overflow-hidden border border-zinc-200/70 bg-white shadow-xl shadow-zinc-200/30 animate-fade-in-up"
+      class="relative mt-3 sm:mt-4 lg:mt-6 rounded-3xl sm:rounded-4xl lg:rounded-[2.5rem] overflow-hidden border border-zinc-200/70 bg-white shadow-xl shadow-black/15 animate-fade-in-up"
       style="animation-delay: 0.35s;"
     >
       <div

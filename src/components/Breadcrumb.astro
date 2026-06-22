@@ -23,7 +23,7 @@ const { items, class: className, style } = Astro.props;
   style={style}
 >
   <ol
-    class="flex list-none items-center gap-1 sm:gap-2 p-0 m-0 text-sm text-zinc-400 min-w-0 flex-nowrap overflow-hidden"
+    class="flex list-none items-center gap-1 sm:gap-2 p-0 m-0 text-sm text-white/50 min-w-0 flex-nowrap overflow-hidden"
   >
     {
       items.map((item, index) => {
@@ -34,25 +34,25 @@ const { items, class: className, style } = Astro.props;
         if (isMiddle && collapseTrail) {
           return (
             <>
-              <li class="shrink-0 text-zinc-300" aria-hidden="true">
+              <li class="shrink-0 text-white/30" aria-hidden="true">
                 <Chevron to="right" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </li>
               <li class="hidden sm:list-item shrink-0">
                 {item.href ? (
                   <a
                     href={item.href}
-                    class="hover:text-brand-600 transition-colors whitespace-nowrap"
+                    class="hover:text-brand-400 transition-colors whitespace-nowrap"
                   >
                     {item.label}
                   </a>
                 ) : (
-                  <span class="text-zinc-500 whitespace-nowrap">
+                  <span class="text-white/50 whitespace-nowrap">
                     {item.label}
                   </span>
                 )}
               </li>
               {index === 1 && (
-                <li class="sm:hidden shrink-0 text-zinc-400" aria-hidden="true">
+                <li class="sm:hidden shrink-0 text-white/40" aria-hidden="true">
                   …
                 </li>
               )}
@@ -63,7 +63,7 @@ const { items, class: className, style } = Astro.props;
         return (
           <>
             {index > 0 && (
-              <li class="shrink-0 text-zinc-300" aria-hidden="true">
+              <li class="shrink-0 text-white/30" aria-hidden="true">
                 <Chevron to="right" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </li>
             )}
@@ -71,12 +71,12 @@ const { items, class: className, style } = Astro.props;
               {item.href ? (
                 <a
                   href={item.href}
-                  class="hover:text-brand-600 transition-colors whitespace-nowrap"
+                  class="hover:text-brand-400 transition-colors whitespace-nowrap"
                 >
                   {item.label}
                 </a>
               ) : (
-                <span class="text-zinc-500 block truncate" title={item.label}>
+                <span class="text-white/50 block truncate" title={item.label}>
                   {item.shortLabel ? (
                     <>
                       <span class="sm:hidden">{item.shortLabel}</span>

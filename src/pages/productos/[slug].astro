@@ -172,7 +172,7 @@ const productSubcategoryImages = subcategoryImages[product.slug];
 const brandGradient = "from-brand-500 to-brand-600";
 
 const cardBase =
-  "group relative bg-white rounded-2xl lg:rounded-3xl hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500 border border-zinc-100 hover:border-brand-200/50 overflow-hidden";
+  "group relative bg-white rounded-2xl lg:rounded-3xl hover:shadow-2xl hover:shadow-black/25 transition-all duration-500 border border-zinc-100 hover:border-brand-200/50 overflow-hidden";
 
 const otherProducts = products.filter((p) => p.slug !== product.slug);
 
@@ -199,26 +199,6 @@ const structuredData = [
   <main>
     <!-- Hero -->
     <section class="relative pt-32 pb-8 sm:pb-12 lg:pb-16 overflow-hidden">
-      <div class="absolute inset-0 z-0">
-        <div
-          class="absolute inset-0 bg-linear-to-b from-zinc-50 via-white to-zinc-100/80"
-        >
-        </div>
-        <div
-          class="absolute inset-0 opacity-[0.02]"
-          style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.12) 1px, transparent 0); background-size: 32px 32px;"
-        >
-        </div>
-        <div
-          class="absolute top-0 -right-32 w-[400px] sm:w-[500px] lg:w-[700px] h-[400px] sm:h-[500px] lg:h-[700px] bg-brand-500/5 rounded-full blur-[120px]"
-        >
-        </div>
-        <div
-          class="absolute bottom-0 -left-32 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-amber-500/4 rounded-full blur-[100px]"
-        >
-        </div>
-      </div>
-
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           class="mb-8 animate-fade-in-up"
@@ -231,7 +211,7 @@ const structuredData = [
         />
 
         <div
-          class="relative bg-white rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3rem] border border-zinc-200/70 shadow-2xl shadow-zinc-200/40 overflow-hidden animate-fade-in-up"
+          class="relative bg-white rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3rem] border border-zinc-200/70 shadow-2xl shadow-black/20 overflow-hidden animate-fade-in-up"
           style="animation-delay: 0.2s;"
         >
           <div
@@ -262,7 +242,7 @@ const structuredData = [
 
             {
               productImage && (
-                <div class="relative order-1 lg:order-2 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl shadow-zinc-200/50 aspect-4/3 lg:aspect-auto lg:min-h-[320px]">
+                <div class="relative order-1 lg:order-2 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl shadow-black/25 aspect-4/3 lg:aspect-auto lg:min-h-[320px]">
                   <Image
                     src={productImage.src}
                     alt={productImage.alt}
@@ -285,7 +265,7 @@ const structuredData = [
     <!-- Subcategories -->
     {
       product.subcategories && product.subcategories.length > 0 && (
-        <section class="py-16 sm:py-20 bg-white">
+        <section class="py-16 sm:py-20">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
               <span
@@ -293,7 +273,7 @@ const structuredData = [
               >
                 Categorías
               </span>
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight">
+              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
                 Explora nuestras opciones
               </h2>
             </div>
@@ -302,7 +282,7 @@ const structuredData = [
                 const subImage = productSubcategoryImages?.[sub.title];
                 return (
                   <div
-                    class="group relative flex flex-col bg-white rounded-2xl sm:rounded-3xl border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-zinc-200/30 hover:-translate-y-1 transition-all duration-500 animate-fade-in-up overflow-hidden"
+                    class="group relative flex flex-col bg-white rounded-2xl sm:rounded-3xl border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-black/15 hover:-translate-y-1 transition-all duration-500 animate-fade-in-up overflow-hidden"
                     style={`animation-delay: ${0.15 + idx * 0.1}s;`}
                   >
                     <div class="relative aspect-3/2 bg-zinc-200 shrink-0 overflow-hidden">
@@ -357,16 +337,16 @@ const structuredData = [
     <FaqSection faqs={product.faqs} />
 
     <!-- Other products -->
-    <section class="py-16 sm:py-20 lg:py-28 bg-zinc-50/50">
+    <section class="py-16 sm:py-20 lg:py-28">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 lg:mb-16">
           <span
-            class="inline-block px-3 py-1 text-base sm:text-lg font-bold text-brand-600 mb-2 tracking-wider"
+            class="inline-block px-3 py-1 text-base sm:text-lg font-bold text-brand-300 mb-2 tracking-wider"
           >
             Explora más
           </span>
           <h2
-            class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight"
+            class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight"
           >
             Otros servicios
           </h2>
