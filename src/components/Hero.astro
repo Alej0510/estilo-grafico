@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { WHATSAPP_URL } from "../data/products";
 import Arrow from "./icons/Arrow.astro";
+import HeroCard from "./HeroCard.astro";
 import heroImage from "../assets/hero.webp";
 ---
 
@@ -9,15 +10,7 @@ import heroImage from "../assets/hero.webp";
   class="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-28 lg:pb-28"
 >
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <!-- ========== MAIN HERO BOX ========== -->
-    <div
-      class="relative bg-white rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3.5rem] border border-zinc-200/70 shadow-2xl shadow-black/20 overflow-hidden"
-    >
-      <div
-        class="absolute inset-0 bg-linear-to-br from-zinc-50/80 via-white to-zinc-50/40"
-      >
-      </div>
-
+    <HeroCard rounded="hero" padding="p-0">
       <div
         class="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center p-6 sm:p-8 lg:p-12 xl:p-16"
       >
@@ -27,19 +20,19 @@ import heroImage from "../assets/hero.webp";
             class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-600 mb-4 animate-fade-in-up"
             style="animation-delay: 0.05s;"
           >
-            Litografía e impresión gráfica
+            Estilo Gráfico · Medellín
           </p>
           <div class="animate-fade-in-up" style="animation-delay: 0.1s;">
             <h1
               class="text-[2rem] leading-[1.08] sm:text-4xl sm:leading-[1.08] md:text-5xl md:leading-[1.08] lg:text-[2.75rem] lg:leading-[1.08] xl:text-6xl xl:leading-[1.05] font-extrabold text-zinc-900 tracking-[-0.02em] uppercase wrap-break-word"
             >
-              Hacemos<br />
+              Litografía e<br />
               <span
-                class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 via-brand-600 to-amber-600"
+                class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 via-brand-600 to-brand-600"
               >
-                tus ideas
+                impresión gráfica
               </span>
-              realidad
+              en Medellín
             </h1>
           </div>
 
@@ -100,32 +93,17 @@ import heroImage from "../assets/hero.webp";
           </div>
         </div>
       </div>
-    </div>
+    </HeroCard>
 
-    <!-- ========== QUÉ HACEMOS BANNER ========== -->
-    <div
-      class="relative mt-3 sm:mt-4 lg:mt-6 rounded-3xl sm:rounded-4xl lg:rounded-[2.5rem] overflow-hidden border border-zinc-200/70 bg-white shadow-xl shadow-black/15 animate-fade-in-up"
+    <!-- Qué hacemos promo strip -->
+    <HeroCard
+      glow
+      class="mt-3 sm:mt-4 lg:mt-6 shadow-xl shadow-black/15 animate-fade-in-up"
+      padding="p-6 sm:p-8 lg:p-9 xl:p-10"
       style="animation-delay: 0.35s;"
     >
       <div
-        class="absolute inset-0 bg-linear-to-br from-brand-50/60 via-white to-amber-50/40 pointer-events-none"
-      >
-      </div>
-      <div
-        class="absolute -top-24 -right-24 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"
-      >
-      </div>
-      <div
-        class="absolute -bottom-16 -left-16 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"
-      >
-      </div>
-      <div
-        class="absolute top-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-brand-400/40 to-transparent"
-      >
-      </div>
-
-      <div
-        class="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8 p-6 sm:p-8 lg:p-9 xl:p-10"
+        class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8"
       >
         <div class="max-w-2xl">
           <h2
@@ -138,6 +116,12 @@ import heroImage from "../assets/hero.webp";
             Litografía e impresión gráfica de alta calidad en Medellín: desde
             tarjetas de presentación hasta gran formato, con precisión y
             creatividad en cada proyecto.
+            <a
+              href="/nosotros"
+              class="text-brand-600 font-semibold hover:text-brand-500 transition-colors"
+            >
+              Conoce nuestra historia en litografía</a
+            >.
           </p>
         </div>
 
@@ -167,23 +151,6 @@ import heroImage from "../assets/hero.webp";
           </a>
         </div>
       </div>
-    </div>
+    </HeroCard>
   </div>
 </section>
-
-<style>
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in-up {
-    animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0;
-  }
-</style>

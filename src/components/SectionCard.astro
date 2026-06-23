@@ -1,0 +1,33 @@
+---
+interface Props {
+  class?: string;
+  padding?: string;
+  style?: string;
+}
+
+const {
+  class: className = "",
+  padding = "px-6 sm:px-8 lg:px-12 xl:px-14 py-8 sm:py-10 lg:py-12 xl:py-14",
+  style,
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "relative bg-zinc-100/90 rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3rem] border border-zinc-200/80 shadow-2xl shadow-black/20 overflow-hidden",
+    className,
+  ]}
+  style={style}
+>
+  <div
+    class="absolute inset-0 bg-linear-to-br from-brand-50/60 via-zinc-100/80 to-amber-50/40 pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute top-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-brand-400/40 to-transparent pointer-events-none"
+  >
+  </div>
+  <div class:list={["relative", padding]}>
+    <slot />
+  </div>
+</div>

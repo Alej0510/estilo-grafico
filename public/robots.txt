@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://estilo-grafico.com/sitemap-index.xml
+Sitemap: https://estilografico.co/sitemap-index.xml

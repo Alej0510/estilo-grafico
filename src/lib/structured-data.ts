@@ -1,4 +1,4 @@
-import { SITE, absoluteUrl } from "../data/site";
+import { SITE, BUSINESS_ALTERNATE_NAMES, absoluteUrl } from "../data/site";
 import { products } from "../data/products";
 
 export function localBusinessSchema() {
@@ -6,7 +6,7 @@ export function localBusinessSchema() {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "PrintShop"],
     name: SITE.name,
-    alternateName: ["Estilo Grafico", "Estilo Grafico Medellin"],
+    alternateName: [...BUSINESS_ALTERNATE_NAMES],
     description: SITE.description,
     url: SITE.url,
     logo: absoluteUrl(SITE.logo),
@@ -18,6 +18,11 @@ export function localBusinessSchema() {
       addressLocality: SITE.address.city,
       addressRegion: SITE.address.region,
       addressCountry: SITE.address.country,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: SITE.address.geo.latitude,
+      longitude: SITE.address.geo.longitude,
     },
     areaServed: {
       "@type": "City",
@@ -46,7 +51,7 @@ export function websiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE.name,
-    alternateName: ["Estilo Grafico"],
+    alternateName: [...BUSINESS_ALTERNATE_NAMES],
     url: SITE.url,
   };
 }

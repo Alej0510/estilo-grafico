@@ -1,5 +1,6 @@
 ---
-import { SITE } from "../data/site";
+import { SITE, formatAddress } from "../data/site";
+import { products } from "../data/products";
 
 const year = new Date().getFullYear();
 const externalLinkProps = {
@@ -34,13 +35,14 @@ const externalLinkProps = {
           <a href="/" class="inline-block mb-2 group">
             <img
               src="/HorizontalWhiteLogo.png"
-              alt="Estilo Gráfico Logo"
+              alt="Estilo Gráfico — Litografía en Medellín"
               class="h-26 w-40 transition-all duration-300 group-hover:brightness-110"
             />
           </a>
           <p class="text-zinc-400 max-w-sm mb-8 leading-relaxed text-lg">
-            Soluciones de impresión y diseño profesional de alta calidad.
-            Transformamos tus ideas en realidad con tecnología de vanguardia.
+            Litografía e impresión gráfica profesional en Medellín. Etiquetas,
+            empaques, material impreso, gran formato y diseño con calidad desde
+            2007.
           </p>
 
           <!-- Social Links -->
@@ -129,17 +131,31 @@ const externalLinkProps = {
                 Nosotros
               </a>
             </li>
-            <li>
-              <a
-                href="#productos"
-                class="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-300"
-              >
-                <span
-                  class="w-0 group-hover:w-2 h-px bg-brand-500 transition-all duration-300"
-                ></span>
-                Productos
-              </a>
-            </li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="lg:col-span-2">
+          <h3
+            class="text-xs font-semibold text-white tracking-wider uppercase mb-6 flex items-center gap-2"
+          >
+            <span class="w-8 h-px bg-brand-500"></span>
+            Servicios
+          </h3>
+          <ul class="space-y-4">
+            {
+              products.map((product) => (
+                <li>
+                  <a
+                    href={`/productos/${product.slug}`}
+                    class="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-300"
+                  >
+                    <span class="w-0 group-hover:w-2 h-px bg-brand-500 transition-all duration-300" />
+                    {product.navLabel}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
@@ -152,6 +168,33 @@ const externalLinkProps = {
             Contacto
           </h3>
           <ul class="space-y-5">
+            <li class="flex items-start gap-4">
+              <div
+                class="p-2 bg-brand-500/10 rounded-lg border border-brand-500/20 shrink-0"
+              >
+                <svg
+                  class="h-5 w-5 text-brand-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-zinc-300 font-medium">{formatAddress()}</p>
+              </div>
+            </li>
             <li class="flex items-center gap-4">
               <div
                 class="p-2 bg-brand-500/10 rounded-lg border border-brand-500/20"

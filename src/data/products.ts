@@ -317,7 +317,7 @@ export const generalFaqs = [
   },
   {
     q: "¿Qué materiales impresos pueden realizar?",
-    a: "Podemos imprimir tarjetas de presentación, folletos, catálogos, flyers y más, utilizando técnicas avanzadas para asegurar una alta calidad en cada pieza.",
+    a: "Podemos imprimir tarjetas de presentación, folletos, catálogos, flyers y más con técnicas de litografía e impresión avanzadas para asegurar alta calidad en cada pieza.",
   },
   {
     q: "¿Qué opciones de impresión a gran formato tienen disponibles?",

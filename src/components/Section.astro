@@ -1,0 +1,28 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  /** Tighter spacing for sections that follow a hero closely */
+  compact?: boolean;
+  "aria-labelledby"?: string;
+}
+
+const {
+  id,
+  class: className = "",
+  compact = false,
+  "aria-labelledby": ariaLabelledby,
+} = Astro.props;
+
+const spacing = compact ? "py-12 sm:py-16 lg:py-20" : "py-16 sm:py-20 lg:py-28";
+---
+
+<section
+  id={id}
+  class:list={["relative", spacing, className]}
+  aria-labelledby={ariaLabelledby}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <slot />
+  </div>
+</section>

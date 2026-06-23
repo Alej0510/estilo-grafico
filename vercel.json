@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/litografia-medellin",
+      "destination": "/nosotros",
+      "permanent": true
+    }
+  ]
+}

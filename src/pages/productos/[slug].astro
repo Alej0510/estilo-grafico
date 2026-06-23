@@ -5,9 +5,18 @@ import ContactBanner from "../../components/ContactBanner.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import ServiceIcon from "../../components/icons/ServiceIcon.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
+import Section from "../../components/Section.astro";
+import SectionCard from "../../components/SectionCard.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import HeroCard from "../../components/HeroCard.astro";
+import ContentCard from "../../components/ContentCard.astro";
 import Arrow from "../../components/icons/Arrow.astro";
 import { products } from "../../data/products";
-import { productSeoDescription, productSeoTitle } from "../../data/site";
+import {
+  productSeoDescription,
+  productSeoH1,
+  productSeoTitle,
+} from "../../data/site";
 import {
   breadcrumbSchema,
   faqSchema,
@@ -171,9 +180,6 @@ const productSubcategoryImages = subcategoryImages[product.slug];
 
 const brandGradient = "from-brand-500 to-brand-600";
 
-const cardBase =
-  "group relative bg-white rounded-2xl lg:rounded-3xl hover:shadow-2xl hover:shadow-black/25 transition-all duration-500 border border-zinc-100 hover:border-brand-200/50 overflow-hidden";
-
 const otherProducts = products.filter((p) => p.slug !== product.slug);
 
 const productPath = `/productos/${product.slug}`;
@@ -182,8 +188,8 @@ const seoDescription = productSeoDescription(product.description);
 const structuredData = [
   breadcrumbSchema([
     { name: "Inicio", path: "/" },
-    { name: "Productos", path: "/#productos" },
-    { name: product.title, path: productPath },
+    { name: "Productos", path: "/" },
+    { name: product.navLabel, path: productPath },
   ]),
   serviceSchema(product.title, product.description, productPath),
   faqSchema(product.faqs),
@@ -201,7 +207,7 @@ const structuredData = [
     <section class="relative pt-32 pb-8 sm:pb-12 lg:pb-16 overflow-hidden">
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumb
-          class="mb-8 animate-fade-in-up"
+          class="mb-8 ml-3 animate-fade-in-up"
           style="animation-delay: 0.1s;"
           items={[
             { label: "Inicio", href: "/" },
@@ -210,27 +216,15 @@ const structuredData = [
           ]}
         />
 
-        <div
-          class="relative bg-white rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3rem] border border-zinc-200/70 shadow-2xl shadow-black/20 overflow-hidden animate-fade-in-up"
-          style="animation-delay: 0.2s;"
-        >
+        <HeroCard class="animate-fade-in-up" style="animation-delay: 0.2s;">
           <div
-            class="absolute inset-0 bg-linear-to-br from-zinc-50/80 via-white to-brand-50/20 pointer-events-none"
-          >
-          </div>
-          <div
-            class="absolute top-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-brand-400/40 to-transparent"
-          >
-          </div>
-
-          <div
-            class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center p-6 sm:p-8 lg:p-12 xl:p-14"
+            class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center"
           >
             <div class="min-w-0 order-2 lg:order-1">
               <h1
                 class="text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight mb-5"
               >
-                {product.title}
+                {productSeoH1(product.navLabel)}
               </h1>
 
               <p
@@ -258,151 +252,145 @@ const structuredData = [
               )
             }
           </div>
-        </div>
+        </HeroCard>
       </div>
     </section>
 
     <!-- Subcategories -->
     {
       product.subcategories && product.subcategories.length > 0 && (
-        <section class="py-16 sm:py-20 relative">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-              <span
-                class={`inline-block px-3 py-1 text-gray-100 sm:text-lg font-bold ${product.accent} mb-3 tracking-wider`}
-              >
-                Categorías
-              </span>
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-500 tracking-tight">
+        <Section compact>
+          <SectionCard
+            class="animate-fade-in-up"
+            style="animation-delay: 0.1s;"
+          >
+            <div class="flex flex-col gap-8 lg:gap-10">
+              <SectionHeader eyebrow="Categorías">
                 Explora nuestras opciones
-              </h2>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {product.subcategories.map((sub, idx) => {
-                const subImage = productSubcategoryImages?.[sub.title];
-                return (
-                  <div
-                    class="group relative flex flex-col bg-white rounded-2xl sm:rounded-3xl border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-black/15 hover:-translate-y-1 transition-all duration-500 animate-fade-in-up overflow-hidden"
-                    style={`animation-delay: ${0.15 + idx * 0.1}s;`}
-                  >
-                    <div class="relative aspect-3/2 bg-zinc-200 shrink-0 overflow-hidden">
-                      {subImage ? (
-                        typeof subImage.src === "string" ? (
-                          <img
-                            src={subImage.src}
-                            alt={subImage.alt}
-                            class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                            loading="lazy"
-                            decoding="async"
-                            referrerpolicy="no-referrer"
-                          />
+              </SectionHeader>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                {product.subcategories.map((sub, idx) => {
+                  const subImage = productSubcategoryImages?.[sub.title];
+                  return (
+                    <ContentCard
+                      padding={false}
+                      class="flex flex-col animate-fade-in-up"
+                      style={`animation-delay: ${0.15 + idx * 0.1}s;`}
+                    >
+                      <div class="relative aspect-3/2 bg-zinc-200 shrink-0 overflow-hidden">
+                        {subImage ? (
+                          typeof subImage.src === "string" ? (
+                            <img
+                              src={subImage.src}
+                              alt={subImage.alt}
+                              class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                              loading="lazy"
+                              decoding="async"
+                              referrerpolicy="no-referrer"
+                            />
+                          ) : (
+                            <Image
+                              src={subImage.src}
+                              alt={subImage.alt}
+                              class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                              widths={[400, 640, 800]}
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          )
                         ) : (
-                          <Image
-                            src={subImage.src}
-                            alt={subImage.alt}
-                            class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                            widths={[400, 640, 800]}
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            loading="lazy"
-                            decoding="async"
+                          <div
+                            class="absolute inset-0"
+                            role="img"
+                            aria-label={`Imagen de ${sub.title}`}
                           />
-                        )
-                      ) : (
-                        <div
-                          class="absolute inset-0"
-                          role="img"
-                          aria-label={`Imagen de ${sub.title}`}
-                        />
-                      )}
-                      <div class="absolute inset-0 bg-linear-to-t from-zinc-900/10 via-transparent to-transparent" />
-                      <div class="absolute inset-0 ring-1 ring-inset ring-black/5" />
-                    </div>
-                    <div class="p-6 sm:p-8">
-                      <h3 class="text-xl font-bold text-zinc-900 mb-3">
-                        {sub.title}
-                      </h3>
-                      <p class="text-zinc-500 leading-relaxed">
-                        {sub.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+                        )}
+                        <div class="absolute inset-0 bg-linear-to-t from-zinc-900/10 via-transparent to-transparent" />
+                        <div class="absolute inset-0 ring-1 ring-inset ring-black/5" />
+                      </div>
+                      <div class="p-6 sm:p-8">
+                        <h3 class="text-xl font-bold text-zinc-900 mb-3">
+                          {sub.title}
+                        </h3>
+                        <p class="text-zinc-500 leading-relaxed">
+                          {sub.description}
+                        </p>
+                      </div>
+                    </ContentCard>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </section>
+          </SectionCard>
+        </Section>
       )
     }
 
     <FaqSection faqs={product.faqs} />
 
     <!-- Other products -->
-    <section class="py-16 sm:py-20 lg:py-28 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 lg:mb-16">
-          <span
-            class="inline-block px-3 py-1 text-base sm:text-lg font-bold text-gray-300 mb-2 tracking-wider"
-          >
-            Explora más
-          </span>
-          <h2
-            class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-100 tracking-tight"
-          >
-            Otros servicios
-          </h2>
-        </div>
+    <Section>
+      <SectionCard
+        padding="px-6 sm:px-8 lg:px-12 xl:px-14 pt-6 sm:pt-7 lg:pt-8 xl:pt-9 pb-8 sm:pb-10 lg:pb-12 xl:pb-14"
+      >
+        <div class="flex flex-col gap-6 lg:gap-7">
+          <SectionHeader eyebrow="Explora más"> Otros servicios </SectionHeader>
 
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
-        >
-          {
-            otherProducts.map((p, index) => (
-              <a
-                href={`/productos/${p.slug}`}
-                class={`${cardBase} flex flex-col animate-fade-in-up`}
-                style={`animation-delay: ${0.1 + index * 0.1}s;`}
-              >
-                <div
-                  class={`absolute inset-0 bg-linear-to-br ${brandGradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}
-                />
-                <div
-                  class={`absolute top-0 right-0 w-24 h-24 bg-linear-to-bl ${brandGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-bl-[80px] pointer-events-none`}
-                />
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+          >
+            {
+              otherProducts.map((p, index) => (
+                <ContentCard
+                  href={`/productos/${p.slug}`}
+                  variant="link"
+                  padding={false}
+                  class="flex flex-col animate-fade-in-up"
+                  style={`animation-delay: ${0.1 + index * 0.1}s;`}
+                >
+                  <div
+                    class={`absolute inset-0 bg-linear-to-br ${brandGradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}
+                  />
+                  <div
+                    class={`absolute top-0 right-0 w-24 h-24 bg-linear-to-bl ${brandGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-bl-[80px] pointer-events-none`}
+                  />
 
-                <div class="relative z-10 flex flex-col flex-1 p-5 sm:p-6">
-                  <div class="flex items-start justify-between mb-4">
-                    <div
-                      class={`inline-flex items-center justify-center p-3 rounded-xl bg-linear-to-br ${brandGradient} text-white shadow-md group-hover:scale-105 group-hover:shadow-lg transition-all duration-500`}
-                    >
-                      <ServiceIcon slug={p.slug} class="w-6 h-6" />
+                  <div class="relative z-10 flex flex-col flex-1 p-5 sm:p-6">
+                    <div class="flex items-start justify-between mb-4">
+                      <div
+                        class={`inline-flex items-center justify-center p-3 rounded-xl bg-linear-to-br ${brandGradient} text-white shadow-md group-hover:scale-105 group-hover:shadow-lg transition-all duration-500`}
+                      >
+                        <ServiceIcon slug={p.slug} class="w-6 h-6" />
+                      </div>
+                      <span class="text-4xl font-extrabold text-zinc-100 group-hover:text-brand-600/20 transition-colors duration-500 select-none leading-none">
+                        {p.number}
+                      </span>
                     </div>
-                    <span class="text-4xl font-extrabold text-zinc-100 group-hover:text-brand-600/20 transition-colors duration-500 select-none leading-none">
-                      {p.number}
-                    </span>
+
+                    <h3 class="text-lg font-bold text-zinc-900 mb-2 group-hover:text-brand-600 transition-colors duration-300 line-clamp-2">
+                      {p.title}
+                    </h3>
+
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-4 flex-1 line-clamp-3">
+                      {p.description}
+                    </p>
+
+                    <div class="flex items-center gap-2 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                      <span>Conocer más</span>
+                      <Arrow
+                        to="right"
+                        class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </div>
                   </div>
-
-                  <h3 class="text-lg font-bold text-zinc-900 mb-2 group-hover:text-brand-600 transition-colors duration-300 line-clamp-2">
-                    {p.title}
-                  </h3>
-
-                  <p class="text-sm text-zinc-500 leading-relaxed mb-4 flex-1 line-clamp-3">
-                    {p.description}
-                  </p>
-
-                  <div class="flex items-center gap-2 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                    <span>Conocer más</span>
-                    <Arrow
-                      to="right"
-                      class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </div>
-                </div>
-              </a>
-            ))
-          }
+                </ContentCard>
+              ))
+            }
+          </div>
         </div>
-      </div>
-    </section>
+      </SectionCard>
+    </Section>
   </main>
   <ContactBanner
     headline={product.ctaHeadline ??
@@ -411,20 +399,3 @@ const structuredData = [
       "Cuéntanos los detalles de tu proyecto y te enviamos una cotización personalizada sin compromiso."}
   />
 </Layout>
-
-<style>
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in-up {
-    animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0;
-  }
-</style>
