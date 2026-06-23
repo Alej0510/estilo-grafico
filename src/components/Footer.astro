@@ -142,15 +142,15 @@ const externalLinkProps = {
             <span class="w-8 h-px bg-brand-500"></span>
             Servicios
           </h3>
-          <ul class="space-y-4">
+          <ul class="space-y-3">
             {
               products.map((product) => (
                 <li>
                   <a
                     href={`/productos/${product.slug}`}
-                    class="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-300"
+                    class="group flex items-center gap-1 text-zinc-400 hover:text-white transition-colors duration-300"
                   >
-                    <span class="w-0 group-hover:w-2 h-px bg-brand-500 transition-all duration-300" />
+                    <span class="w-0 group-hover:w-1.5 h-px bg-brand-500 transition-all duration-300" />
                     {product.navLabel}
                   </a>
                 </li>
@@ -168,7 +168,7 @@ const externalLinkProps = {
             Contacto
           </h3>
           <ul class="space-y-5">
-            <li class="flex items-start gap-4">
+            <li class="flex items-center gap-4">
               <div
                 class="p-2 bg-brand-500/10 rounded-lg border border-brand-500/20 shrink-0"
               >
