@@ -60,8 +60,8 @@ const jsonLd = [localBusinessSchema(), ...structuredData];
     <Analytics />
   </head>
   <body
-    class="text-zinc-800 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-zinc-900"
-    style={`background-color: #1a1a19; background-image: url(${heroBg.src}); background-size: cover; background-position: center; background-attachment: fixed;`}
+    class="page-bg text-zinc-800 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-zinc-900"
+    style={`--page-bg-image: url(${heroBg.src});`}
   >
     <div class="fixed inset-0 bg-black/40 pointer-events-none z-0"></div>
     <Header />

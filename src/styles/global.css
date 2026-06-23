@@ -25,6 +25,20 @@
     @apply font-sans antialiased text-zinc-800 bg-zinc-900;
   }
 
+  .page-bg {
+    background-color: #1a1a19;
+    background-image: var(--page-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+  }
+
+  @media (min-width: 768px) {
+    .page-bg {
+      background-attachment: fixed;
+    }
+  }
+
   h1,
   h2,
   h3,

@@ -18,6 +18,7 @@ import Eye from "../components/icons/Eye.astro";
 import aboutUs1 from "../assets/about-us-1.webp";
 import aboutUs2 from "../assets/about-us-2.webp";
 import { PAGE_SEO } from "../data/site";
+import { breadcrumbSchema } from "../lib/structured-data";
 
 const year = new Date().getFullYear();
 const yearsSince = year - 2007;
@@ -66,6 +67,12 @@ const values = [
   title={PAGE_SEO.nosotros.title}
   description={PAGE_SEO.nosotros.description}
   path="/nosotros"
+  structuredData={[
+    breadcrumbSchema([
+      { name: "Inicio", path: "/" },
+      { name: "Nosotros", path: "/nosotros" },
+    ]),
+  ]}
 >
   <main>
     <!-- ========== HERO ========== -->
@@ -87,7 +94,8 @@ const values = [
                 class="animate-reveal flex items-center gap-3 mb-6"
                 style="animation-delay: 0.15s;"
               >
-                <span class="block w-8 h-px bg-brand-500" aria-hidden="true"></span>
+                <span class="block w-8 h-px bg-brand-500" aria-hidden="true"
+                ></span>
                 <span
                   class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-600"
                 >
@@ -99,13 +107,13 @@ const values = [
                 class="animate-reveal text-[2rem] leading-[1.08] sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-extrabold text-zinc-900 tracking-[-0.02em] mb-6"
                 style="animation-delay: 0.2s;"
               >
-                Desde 2007,
+                Empresa de
                 <span
                   class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 via-brand-600 to-amber-600"
                 >
-                  dando forma
+                  litografía
                 </span>
-                a tus ideas
+                en Medellín
               </h1>
 
               <p
@@ -198,7 +206,7 @@ const values = [
     <!-- ========== MISSION & VISION ========== -->
     <Section>
       <SectionCard>
-          <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 lg:items-stretch">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 lg:items-stretch">
           <!-- Image column -->
           <div class="lg:col-span-5 flex h-full min-h-[240px] sm:min-h-[280px]">
             <div
@@ -257,15 +265,19 @@ const values = [
               </p>
             </ContentCard>
           </div>
-          </div>
-        </SectionCard>
+        </div>
+      </SectionCard>
     </Section>
 
     <!-- ========== VALUES ========== -->
     <Section aria-labelledby="values-heading">
       <SectionCard>
-          <div class="flex flex-col gap-8 lg:gap-10">
-          <SectionHeader eyebrow="Lo que nos define" decorated id="values-heading">
+        <div class="flex flex-col gap-8 lg:gap-10">
+          <SectionHeader
+            eyebrow="Lo que nos define"
+            decorated
+            id="values-heading"
+          >
             Nuestros valores,
             <span
               class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 to-amber-600"
@@ -275,52 +287,53 @@ const values = [
           </SectionHeader>
 
           <div class="flex flex-col gap-4 sm:gap-5 lg:gap-6">
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6"
-          >
-          {
-            values.slice(0, 3).map(({ title, description, Icon }) => (
-              <ContentCard>
-                <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-linear-to-br from-brand-500/10 to-amber-500/10 text-brand-600 mb-5 group-hover:scale-110 transition-transform duration-500">
-                  <Icon class="w-6 h-6" />
-                </div>
-                <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-2">
-                  {title}
-                </h3>
-                <p class="text-sm sm:text-base text-zinc-500 leading-relaxed">
-                  {description}
-                </p>
-              </ContentCard>
-            ))
-          }
-        </div>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6"
+            >
+              {
+                values.slice(0, 3).map(({ title, description, Icon }) => (
+                  <ContentCard>
+                    <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-linear-to-br from-brand-500/10 to-amber-500/10 text-brand-600 mb-5 group-hover:scale-110 transition-transform duration-500">
+                      <Icon class="w-6 h-6" />
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-2">
+                      {title}
+                    </h3>
+                    <p class="text-sm sm:text-base text-zinc-500 leading-relaxed">
+                      {description}
+                    </p>
+                  </ContentCard>
+                ))
+              }
+            </div>
 
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6"
-        >
-          {
-            values.slice(3).map(({ title, description, Icon }) => (
-              <ContentCard>
-                <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-linear-to-br from-brand-500/10 to-amber-500/10 text-brand-600 mb-5 group-hover:scale-110 transition-transform duration-500">
-                  <Icon class="w-6 h-6" />
-                </div>
-                <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-2">
-                  {title}
-                </h3>
-                <p class="text-sm sm:text-base text-zinc-500 leading-relaxed">
-                  {description}
-                </p>
-              </ContentCard>
-            ))
-          }
-        </div>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6"
+            >
+              {
+                values.slice(3).map(({ title, description, Icon }) => (
+                  <ContentCard>
+                    <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-linear-to-br from-brand-500/10 to-amber-500/10 text-brand-600 mb-5 group-hover:scale-110 transition-transform duration-500">
+                      <Icon class="w-6 h-6" />
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-2">
+                      {title}
+                    </h3>
+                    <p class="text-sm sm:text-base text-zinc-500 leading-relaxed">
+                      {description}
+                    </p>
+                  </ContentCard>
+                ))
+              }
+            </div>
           </div>
-        </SectionCard>
+        </div>
+      </SectionCard>
     </Section>
-  </main>
 
-  <ContactBanner
-    headline="¿Listo para transformar tus ideas en realidad?"
-    subtext="Contáctanos y descubre cómo podemos ayudarte con tus necesidades de impresión y diseño."
-  />
+    <ContactBanner
+      headline="¿Listo para transformar tus ideas en realidad?"
+      subtext="Contáctanos y descubre cómo podemos ayudarte con tus necesidades de impresión y diseño."
+    />
+  </main>
 </Layout>

@@ -12,7 +12,11 @@ import HeroCard from "../../components/HeroCard.astro";
 import ContentCard from "../../components/ContentCard.astro";
 import Arrow from "../../components/icons/Arrow.astro";
 import { products } from "../../data/products";
-import { productSeoDescription, productSeoTitle } from "../../data/site";
+import {
+  productSeoDescription,
+  productSeoH1,
+  productSeoTitle,
+} from "../../data/site";
 import {
   breadcrumbSchema,
   faqSchema,
@@ -184,8 +188,8 @@ const seoDescription = productSeoDescription(product.description);
 const structuredData = [
   breadcrumbSchema([
     { name: "Inicio", path: "/" },
-    { name: "Productos", path: "/#productos" },
-    { name: product.title, path: productPath },
+    { name: "Productos", path: "/" },
+    { name: product.navLabel, path: productPath },
   ]),
   serviceSchema(product.title, product.description, productPath),
   faqSchema(product.faqs),
@@ -220,7 +224,7 @@ const structuredData = [
               <h1
                 class="text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight mb-5"
               >
-                {product.title}
+                {productSeoH1(product.navLabel)}
               </h1>
 
               <p
