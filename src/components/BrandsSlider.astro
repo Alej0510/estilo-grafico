@@ -6,55 +6,33 @@ import Madecentro from "../assets/madecentro.jpg";
 import Pool from "../assets/Pool.png";
 
 const brands = [
-  { name: "Edding", logo: Edding, height: "max-h-12" },
-  { name: "Enviaseo", logo: Enviaseo, height: "max-h-26" },
-  { name: "Madecentro", logo: Madecentro, height: "max-h-12" },
-  { name: "Pool", logo: Pool, height: "max-h-20" },
+  { name: "Edding", logo: Edding },
+  { name: "Enviaseo", logo: Enviaseo },
+  { name: "Madecentro", logo: Madecentro },
+  { name: "Pool", logo: Pool },
 ];
 ---
 
 <section
-  class="py-10 bg-[rgba(255,255,255,0.1)] backdrop-blur-[20px] brands-slider-strip"
+  class="border-y-[0.5px] border-white/25 bg-white/25 py-10 backdrop-blur-[20px]"
 >
-  <div class="relative overflow-hidden" id="brands-marquee-viewport">
+  <div
+    class="relative overflow-hidden mask-[linear-gradient(to_right,transparent,black_6rem,black_calc(100%-6rem),transparent)]"
+    id="brands-marquee-viewport"
+  >
     <div
-      class="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-[rgba(255,255,255,0.15)] to-transparent z-10 pointer-events-none"
+      class="flex w-max will-change-transform [--marquee-shift:0px] hover:[animation-play-state:paused]"
+      id="brands-marquee-track"
     >
-    </div>
-    <div
-      class="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-[rgba(255,255,255,0.15)] to-transparent z-10 pointer-events-none"
-    >
-    </div>
-
-    <div class="marquee-track flex w-max" id="brands-marquee-track">
-      <div class="marquee-segment flex items-center gap-16 shrink-0 pr-16">
+      <div class="marquee-segment flex shrink-0 items-center gap-16 pr-16">
         {
           brands.map((brand) => (
-            <div class="flex items-center justify-center w-40 h-20 shrink-0">
-              <Image
-                src={brand.logo}
-                alt={brand.name}
-                class={`${brand.height} w-auto object-contain opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500`}
-                loading="eager"
-              />
-            </div>
-          ))
-        }
-      </div>
-      <div
-        class="marquee-segment flex items-center gap-16 shrink-0 pr-16"
-        aria-hidden="true"
-      >
-        {
-          brands.map((brand) => (
-            <div class="flex items-center justify-center w-40 h-20 shrink-0">
-              <Image
-                src={brand.logo}
-                alt=""
-                class={`${brand.height} w-auto object-contain opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500`}
-                loading="eager"
-              />
-            </div>
+            <Image
+              src={brand.logo}
+              alt={brand.name}
+              class="h-12 w-auto max-w-40 shrink-0 object-contain opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
+              loading="eager"
+            />
           ))
         }
       </div>
@@ -70,11 +48,27 @@ const brands = [
 
     const segments = () => track.querySelectorAll(".marquee-segment");
 
+    const ensureLoopSegment = () => {
+      const list = segments();
+      if (list.length !== 1) return;
+
+      const clone = list[0].cloneNode(true);
+      if (!(clone instanceof HTMLElement)) return;
+
+      clone.setAttribute("aria-hidden", "true");
+      clone
+        .querySelectorAll("img")
+        .forEach((img) => img.setAttribute("alt", ""));
+      track.appendChild(clone);
+    };
+
     const fillTrack = () => {
+      ensureLoopSegment();
+
       const list = segments();
       if (list.length < 2) return;
 
-      const template = list[1];
+      const template = list[0];
       const viewportWidth = viewport.clientWidth;
       const shift = (list[1] as HTMLElement).offsetLeft;
       const minWidth = viewportWidth + shift;
@@ -98,7 +92,7 @@ const brands = [
       if (shift <= 0) return;
 
       track.style.setProperty("--marquee-shift", `${shift}px`);
-      track.classList.add("marquee-ready");
+      track.classList.add("animate-marquee-scroll");
     };
 
     const waitForImages = () => {
@@ -137,34 +131,3 @@ const brands = [
   setupBrandsMarquee();
   document.addEventListener("astro:page-load", setupBrandsMarquee);
 </script>
-
-<style>
-  .brands-slider-strip {
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 0.5px solid rgba(255, 255, 255, 0.3);
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
-  }
-
-  .marquee-track {
-    --marquee-shift: 0px;
-    --marquee-duration: 22s;
-    will-change: transform;
-  }
-
-  .marquee-track.marquee-ready {
-    animation: marquee-scroll var(--marquee-duration) linear infinite;
-  }
-
-  .marquee-track.marquee-ready:hover {
-    animation-play-state: paused;
-  }
-
-  @keyframes marquee-scroll {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(calc(-1 * var(--marquee-shift)), 0, 0);
-    }
-  }
-</style>
