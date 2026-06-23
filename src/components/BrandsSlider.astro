@@ -7,20 +7,22 @@ import Pool from "../assets/Pool.png";
 
 const brands = [
   { name: "Edding", logo: Edding, height: "max-h-12" },
-  { name: "Enviaseo", logo: Enviaseo, height: "max-h-20" },
+  { name: "Enviaseo", logo: Enviaseo, height: "max-h-26" },
   { name: "Madecentro", logo: Madecentro, height: "max-h-12" },
   { name: "Pool", logo: Pool, height: "max-h-20" },
 ];
 ---
 
-<section class="py-10 bg-white/90 backdrop-blur-sm border-y border-white/10">
+<section
+  class="py-10 bg-[rgba(255,255,255,0.1)] backdrop-blur-[20px] brands-slider-strip"
+>
   <div class="relative overflow-hidden" id="brands-marquee-viewport">
     <div
-      class="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white/90 to-transparent z-10 pointer-events-none"
+      class="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-[rgba(255,255,255,0.15)] to-transparent z-10 pointer-events-none"
     >
     </div>
     <div
-      class="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white/90 to-transparent z-10 pointer-events-none"
+      class="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-[rgba(255,255,255,0.15)] to-transparent z-10 pointer-events-none"
     >
     </div>
 
@@ -32,7 +34,7 @@ const brands = [
               <Image
                 src={brand.logo}
                 alt={brand.name}
-                class={`${brand.height} w-auto object-contain opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500`}
+                class={`${brand.height} w-auto object-contain opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500`}
                 loading="eager"
               />
             </div>
@@ -49,7 +51,7 @@ const brands = [
               <Image
                 src={brand.logo}
                 alt=""
-                class={`${brand.height} w-auto object-contain opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500`}
+                class={`${brand.height} w-auto object-contain opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500`}
                 loading="eager"
               />
             </div>
@@ -137,6 +139,12 @@ const brands = [
 </script>
 
 <style>
+  .brands-slider-strip {
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
+  }
+
   .marquee-track {
     --marquee-shift: 0px;
     --marquee-duration: 22s;
