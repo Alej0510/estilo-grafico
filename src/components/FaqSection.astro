@@ -1,6 +1,12 @@
 ---
 import Chevron from "./icons/Chevron.astro";
+
+import Section from "./Section.astro";
+
 import SectionCard from "./SectionCard.astro";
+
+import SectionHeader from "./SectionHeader.astro";
+import ContentCard from "./ContentCard.astro";
 
 interface Props {
   faqs: { q: string; a: string }[];
@@ -10,73 +16,73 @@ interface Props {
 
 const {
   faqs,
+
   title = "¿Tienes alguna pregunta?",
+
   subtitle = "Preguntas frecuentes",
 } = Astro.props;
 ---
 
-<section class="py-16 sm:py-20 lg:py-28 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <SectionCard padding="px-6 sm:px-8 lg:px-12 xl:px-14 pt-6 sm:pt-7 lg:pt-8 xl:pt-9 pb-8 sm:pb-10 lg:pb-12 xl:pb-14 max-w-3xl mx-auto">
-      <div class="flex flex-col gap-6 lg:gap-7">
-      <div class="text-center">
-        <span
-          class="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-brand-600 mb-2"
-        >
-          FAQ
-        </span>
-        <h2
-          class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight"
-        >
-          {title}
-        </h2>
-        <p class="text-zinc-500 mt-2 text-lg">{subtitle}</p>
-      </div>
+<Section>
+  <SectionCard
+    padding="px-6 sm:px-8 lg:px-12 xl:px-14 pt-6 sm:pt-7 lg:pt-8 xl:pt-9 pb-8 sm:pb-10 lg:pb-12 xl:pb-14 max-w-3xl mx-auto"
+  >
+    <div class="flex flex-col gap-6 lg:gap-7">
+      <SectionHeader eyebrow="FAQ" description={subtitle}>
+        {title}
+      </SectionHeader>
 
       <div class="space-y-4" id="faq-list">
-      {
-        faqs.map((faq, index) => (
-          <div
-            class="border border-zinc-200 bg-white rounded-2xl sm:rounded-3xl overflow-hidden animate-fade-in-up"
-            style={`animation-delay: ${0.1 + index * 0.1}s;`}
-          >
-            <button
-              class="faq-toggle w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-4 text-left  transition-colors duration-300 cursor-pointer"
-              type="button"
+        {
+          faqs.map((faq, index) => (
+            <ContentCard
+              variant="flat"
+              padding={false}
+              class="animate-fade-in-up"
+              style={`animation-delay: ${0.1 + index * 0.1}s;`}
             >
-              <span class="text-base sm:text-lg font-semibold text-zinc-800 pr-4 leading-snug">
-                {faq.q}
-              </span>
-              <span class="shrink-0 w-6 h-6 sm:w-10 sm:h-10 rounded-full bg-zinc-100 flex items-center justify-center transition-colors duration-300 faq-icon">
-                <Chevron directional={false} class="w-4 h-4 faq-chevron" />
-              </span>
-            </button>
-            <div class="faq-answer overflow-hidden" style="max-height: 0;">
-              <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-zinc-500 leading-relaxed text-base">
-                {faq.a}
+              <button
+                class="faq-toggle w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-4 text-left transition-colors duration-300 cursor-pointer"
+                type="button"
+              >
+                <span class="text-base sm:text-lg font-semibold text-zinc-800 pr-4 leading-snug">
+                  {faq.q}
+                </span>
+
+                <span class="shrink-0 w-6 h-6 sm:w-10 sm:h-10 rounded-full bg-zinc-100 flex items-center justify-center transition-colors duration-300 faq-icon">
+                  <Chevron directional={false} class="w-4 h-4 faq-chevron" />
+                </span>
+              </button>
+
+              <div class="faq-answer overflow-hidden" style="max-height: 0;">
+                <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-zinc-500 leading-relaxed text-base">
+                  {faq.a}
+                </div>
               </div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
+            </ContentCard>
+          ))
+        }
       </div>
-    </SectionCard>
-  </div>
-</section>
+    </div>
+  </SectionCard>
+</Section>
 
 <script>
   document.addEventListener("click", (event) => {
     const target = event.target;
+
     if (!(target instanceof Element)) return;
 
     const button = target.closest(".faq-toggle");
+
     if (!button) return;
 
     const answer = button.nextElementSibling;
+
     if (!(answer instanceof HTMLElement)) return;
 
     const icon = button.querySelector(".faq-icon");
+
     if (!icon) return;
 
     const isOpen =
@@ -87,40 +93,29 @@ const {
         a.style.maxHeight = "0px";
       }
     });
+
     document.querySelectorAll(".faq-icon").forEach((i) => {
       i.classList.remove("is-open");
     });
 
     if (!isOpen) {
       answer.style.maxHeight = answer.scrollHeight + "px";
+
       icon.classList.add("is-open");
     }
   });
 </script>
 
 <style>
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in-up {
-    animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0;
-  }
-
   .faq-answer {
     max-height: 0;
+
     transition: max-height 0.4s ease;
   }
 
   .faq-chevron {
     color: var(--color-zinc-500);
+
     transition:
       transform 0.3s ease,
       color 0.3s ease;
@@ -132,6 +127,7 @@ const {
 
   .faq-icon.is-open .faq-chevron {
     color: var(--color-brand-500);
+
     transform: rotate(180deg);
   }
 </style>

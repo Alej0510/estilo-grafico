@@ -4,7 +4,11 @@ import Layout from "../layouts/Layout.astro";
 import ContactBanner from "../components/ContactBanner.astro";
 import Arrow from "../components/icons/Arrow.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
+import Section from "../components/Section.astro";
 import SectionCard from "../components/SectionCard.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import HeroCard from "../components/HeroCard.astro";
+import ContentCard from "../components/ContentCard.astro";
 import BadgeCheck from "../components/icons/BadgeCheck.astro";
 import Sparkles from "../components/icons/Sparkles.astro";
 import Users from "../components/icons/Users.astro";
@@ -68,34 +72,22 @@ const values = [
     <section class="relative pt-32 pb-8 sm:pb-12 lg:pb-16 overflow-hidden">
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumb
-          class="mb-8 reveal"
+          class="mb-8 ml-3 animate-reveal"
           style="animation-delay: 0.05s;"
           items={[{ label: "Inicio", href: "/" }, { label: "Nosotros" }]}
         />
 
-        <!-- Hero card -->
-        <div
-          class="relative bg-white rounded-4xl sm:rounded-[2.5rem] lg:rounded-[3rem] border border-zinc-200/70 shadow-2xl shadow-black/20 overflow-hidden"
-        >
+        <HeroCard class="animate-reveal" style="animation-delay: 0.1s;">
           <div
-            class="absolute inset-0 bg-linear-to-br from-zinc-50/80 via-white to-brand-50/20 pointer-events-none"
-          >
-          </div>
-          <div
-            class="absolute top-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-brand-400/40 to-transparent"
-          >
-          </div>
-
-          <div
-            class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center p-6 sm:p-8 lg:p-12 xl:p-14"
+            class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center"
           >
             <!-- Copy -->
             <div class="min-w-0 order-1">
               <div
-                class="reveal flex items-center gap-3 mb-6"
-                style="animation-delay: 0.1s;"
+                class="animate-reveal flex items-center gap-3 mb-6"
+                style="animation-delay: 0.15s;"
               >
-                <span class="block w-8 h-px bg-brand-500"></span>
+                <span class="block w-8 h-px bg-brand-500" aria-hidden="true"></span>
                 <span
                   class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-600"
                 >
@@ -104,8 +96,8 @@ const values = [
               </div>
 
               <h1
-                class="reveal text-[2rem] leading-[1.08] sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-extrabold text-zinc-900 tracking-[-0.02em] mb-6"
-                style="animation-delay: 0.15s;"
+                class="animate-reveal text-[2rem] leading-[1.08] sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-extrabold text-zinc-900 tracking-[-0.02em] mb-6"
+                style="animation-delay: 0.2s;"
               >
                 Desde 2007,
                 <span
@@ -117,8 +109,8 @@ const values = [
               </h1>
 
               <p
-                class="reveal text-base sm:text-lg text-zinc-500 leading-relaxed mb-6"
-                style="animation-delay: 0.22s;"
+                class="animate-reveal text-base sm:text-lg text-zinc-500 leading-relaxed mb-6"
+                style="animation-delay: 0.27s;"
               >
                 Comenzamos a innovar en el mundo de la litografía y hoy somos
                 una compañía líder en soluciones creativas para empresas que
@@ -127,15 +119,15 @@ const values = [
               </p>
 
               <p
-                class="reveal text-base text-zinc-400 leading-relaxed mb-8"
-                style="animation-delay: 0.28s;"
+                class="animate-reveal text-base text-zinc-400 leading-relaxed mb-8"
+                style="animation-delay: 0.33s;"
               >
                 En Estilo Gráfico unimos precisión técnica, diseño profesional y
                 un trato cercano para convertir conceptos en impresiones de alto
                 impacto.
               </p>
 
-              <div class="reveal" style="animation-delay: 0.34s;">
+              <div class="animate-reveal" style="animation-delay: 0.39s;">
                 <a
                   href="/#productos"
                   class="relative inline-flex items-center justify-center px-7 py-3.5 overflow-hidden rounded-full font-bold text-sm sm:text-base text-zinc-900 group"
@@ -158,8 +150,8 @@ const values = [
 
             <!-- Hero image -->
             <div
-              class="relative min-w-0 order-2 mt-8 lg:mt-0 reveal max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 lg:ml-auto"
-              style="animation-delay: 0.2s;"
+              class="relative min-w-0 order-2 mt-8 lg:mt-0 animate-reveal max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 lg:ml-auto"
+              style="animation-delay: 0.25s;"
             >
               <div
                 class="relative aspect-3/4 rounded-3xl sm:rounded-4xl overflow-hidden"
@@ -178,12 +170,12 @@ const values = [
               </div>
             </div>
           </div>
-        </div>
+        </HeroCard>
 
         <!-- Stats strip -->
         <div
-          class="relative -mt-4 sm:-mt-6 mx-2 sm:mx-6 lg:mx-10 reveal"
-          style="animation-delay: 0.4s;"
+          class="relative -mt-4 sm:-mt-6 mx-2 sm:mx-6 lg:mx-10 animate-reveal"
+          style="animation-delay: 0.45s;"
         >
           <div
             class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-200/80 rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-200/70 shadow-xl shadow-black/20"
@@ -204,9 +196,8 @@ const values = [
     </section>
 
     <!-- ========== MISSION & VISION ========== -->
-    <section class="py-16 sm:py-20 lg:py-28 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionCard>
+    <Section>
+      <SectionCard>
           <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 lg:items-stretch">
           <!-- Image column -->
           <div class="lg:col-span-5 flex h-full min-h-[240px] sm:min-h-[280px]">
@@ -228,13 +219,7 @@ const values = [
 
           <!-- Cards column -->
           <div class="lg:col-span-7 flex flex-col gap-6 sm:gap-8 h-full">
-            <div
-              class="relative bg-white rounded-3xl sm:rounded-4xl p-8 sm:p-10 border border-zinc-200/70 shadow-lg shadow-black/10 group hover:border-brand-200/60 hover:shadow-xl transition-all duration-500 overflow-hidden"
-            >
-              <div
-                class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-brand-500 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              >
-              </div>
+            <ContentCard padding="p-8 sm:p-10">
               <div
                 class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-600 mb-6"
               >
@@ -251,15 +236,9 @@ const values = [
                 tecnología avanzada para ofrecer soluciones personalizadas que
                 impulsen tu marca.
               </p>
-            </div>
+            </ContentCard>
 
-            <div
-              class="relative bg-white rounded-3xl sm:rounded-4xl p-8 sm:p-10 border border-zinc-200/70 shadow-lg shadow-black/10 group hover:border-amber-200/60 hover:shadow-xl transition-all duration-500 overflow-hidden"
-            >
-              <div
-                class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-amber-500 to-brand-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              >
-              </div>
+            <ContentCard padding="p-8 sm:p-10">
               <div
                 class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 mb-6"
               >
@@ -276,43 +255,24 @@ const values = [
                 con la excelencia, la innovación continua y la satisfacción de nuestros
                 clientes.
               </p>
-            </div>
+            </ContentCard>
           </div>
           </div>
         </SectionCard>
-      </div>
-    </section>
+    </Section>
 
     <!-- ========== VALUES ========== -->
-    <section
-      class="py-16 sm:py-20 lg:py-28 relative"
-      aria-labelledby="values-heading"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionCard>
+    <Section aria-labelledby="values-heading">
+      <SectionCard>
           <div class="flex flex-col gap-8 lg:gap-10">
-          <div class="text-center max-w-3xl mx-auto">
-            <div class="flex items-center justify-center gap-3 mb-4">
-              <span class="block w-8 h-px bg-brand-500"></span>
-              <span
-                class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-600"
-              >
-                Lo que nos define
-              </span>
-              <span class="block w-8 h-px bg-brand-500"></span>
-            </div>
-            <h2
-              id="values-heading"
-              class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight"
+          <SectionHeader eyebrow="Lo que nos define" decorated id="values-heading">
+            Nuestros valores,
+            <span
+              class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 to-amber-600"
             >
-              Nuestros valores,
-              <span
-                class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 to-amber-600"
-              >
-                nuestra esencia
-              </span>
-            </h2>
-          </div>
+              nuestra esencia
+            </span>
+          </SectionHeader>
 
           <div class="flex flex-col gap-4 sm:gap-5 lg:gap-6">
           <div
@@ -320,7 +280,7 @@ const values = [
           >
           {
             values.slice(0, 3).map(({ title, description, Icon }) => (
-              <div class="relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-black/15 group transition-all duration-500 hover:-translate-y-1">
+              <ContentCard>
                 <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-linear-to-br from-brand-500/10 to-amber-500/10 text-brand-600 mb-5 group-hover:scale-110 transition-transform duration-500">
                   <Icon class="w-6 h-6" />
                 </div>
@@ -330,7 +290,7 @@ const values = [
                 <p class="text-sm sm:text-base text-zinc-500 leading-relaxed">
                   {description}
                 </p>
-              </div>
+              </ContentCard>
             ))
           }
         </div>
@@ -340,7 +300,7 @@ const values = [
         >
           {
             values.slice(3).map(({ title, description, Icon }) => (
-              <div class="relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-zinc-200/70 hover:border-brand-200/60 hover:shadow-xl hover:shadow-black/15 group transition-all duration-500 hover:-translate-y-1">
+              <ContentCard>
                 <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-linear-to-br from-brand-500/10 to-amber-500/10 text-brand-600 mb-5 group-hover:scale-110 transition-transform duration-500">
                   <Icon class="w-6 h-6" />
                 </div>
@@ -350,14 +310,13 @@ const values = [
                 <p class="text-sm sm:text-base text-zinc-500 leading-relaxed">
                   {description}
                 </p>
-              </div>
+              </ContentCard>
             ))
           }
         </div>
           </div>
         </SectionCard>
-      </div>
-    </section>
+    </Section>
   </main>
 
   <ContactBanner
@@ -365,29 +324,3 @@ const values = [
     subtext="Contáctanos y descubre cómo podemos ayudarte con tus necesidades de impresión y diseño."
   />
 </Layout>
-
-<style>
-  @keyframes reveal {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .reveal {
-    animation: reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-  }
-</style>

@@ -1,231 +1,250 @@
 ---
 import { Image } from "astro:assets";
+
 import { products } from "../data/products";
+
+import Section from "./Section.astro";
+
 import SectionCard from "./SectionCard.astro";
+
+import SectionHeader from "./SectionHeader.astro";
+import ContentCard from "./ContentCard.astro";
 import ServiceIcon from "./icons/ServiceIcon.astro";
+
 import packagingImage from "../assets/packaging-design.webp";
+
 import printQualityImage from "../assets/print-quality.webp";
+
 import adBoardImage from "../assets/ad-board.webp";
+
 import graphicDesignImage from "../assets/graphic-design.webp";
 
 const serviceImages: Record<string, { src: ImageMetadata; alt: string }> = {
   "etiquetas-empaques": {
     src: packagingImage,
+
     alt: "Etiquetas y empaques personalizados en Medellín — Estilo Gráfico",
   },
+
   "material-impreso": {
     src: printQualityImage,
+
     alt: "Material impreso litográfico en Medellín — Estilo Gráfico",
   },
+
   "gran-formato": {
     src: adBoardImage,
+
     alt: "Impresión gran formato en Medellín — Estilo Gráfico",
   },
+
   "diseno-imagen": {
     src: graphicDesignImage,
+
     alt: "Diseño gráfico e imagen en Medellín — Estilo Gráfico",
   },
 };
 
 const topRowProducts = products.slice(0, 3);
+
 const featuredProduct = products[3];
 
 const brandGradient = "from-brand-500 to-brand-600";
-
-const cardBase =
-  "group relative bg-white rounded-2xl lg:rounded-3xl hover:shadow-2xl hover:shadow-black/25 transition-all duration-500 border border-zinc-100 hover:border-brand-200/50 overflow-hidden";
 ---
 
-<section id="productos" class="py-10 lg:py-18 relative overflow-hidden">
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <SectionCard>
-      <div class="flex flex-col gap-8 lg:gap-10">
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto">
+<Section id="productos" class="overflow-hidden">
+  <SectionCard>
+    <div class="flex flex-col gap-8 lg:gap-10">
+      <SectionHeader
+        eyebrow="Nuestros Servicios"
+        description="Litografía, impresión y diseño gráfico en Medellín: servicios personalizados para satisfacer todas tus necesidades de comunicación visual."
+      >
+        Impresión y diseño que
+
         <span
-          class="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-brand-600 mb-3"
+          class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 to-brand-600"
         >
-          Nuestros Servicios
-        </span>
-        <h2
-          class="text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-900 leading-tight"
+          elevan tu marca</span
         >
-          Impresión y diseño que
-          <span
-            class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 to-brand-600"
-          >
-            elevan tu marca</span
-          >
-        </h2>
-        <p
-          class="mt-4 text-lg text-zinc-500 max-w-2xl mx-auto leading-relaxed"
-        >
-          Litografía, impresión y diseño gráfico en Medellín: servicios
-          personalizados para satisfacer todas tus necesidades de comunicación
-          visual.
-        </p>
-      </div>
+      </SectionHeader>
 
       <div class="flex flex-col gap-5 lg:gap-6">
-      <!-- Top row: 3 compact cards -->
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
-      >
-        {
-          topRowProducts.map((product, index) => {
-            const image = serviceImages[product.slug];
-            return (
-              <a
-                href={`/productos/${product.slug}`}
-                class={`${cardBase} flex flex-col`}
-                style={`animation-delay: ${index * 0.1}s`}
-              >
-                <div
-                  class={`absolute inset-0 bg-linear-to-br ${brandGradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}
-                />
-                <div
-                  class={`absolute top-0 right-0 w-24 h-24 bg-linear-to-bl ${brandGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-bl-[80px] pointer-events-none`}
-                />
+        <!-- Top row: 3 compact cards -->
 
-                {image && (
-                  <div class="relative aspect-3/2 overflow-hidden shrink-0">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      widths={[320, 480, 640]}
-                      sizes="(max-width: 1024px) 50vw, 33vw"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div class="absolute inset-0 bg-linear-to-t from-zinc-900/25 via-transparent to-transparent" />
-                    <div class="absolute inset-0 ring-1 ring-inset ring-black/5" />
-                  </div>
-                )}
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+        >
+          {
+            topRowProducts.map((product, index) => {
+              const image = serviceImages[product.slug];
 
-                <div class="relative z-10 flex flex-col flex-1 p-5 sm:p-6">
-                  <div class="flex items-start justify-between mb-4">
-                    <div
-                      class={`inline-flex items-center justify-center p-3 rounded-xl bg-linear-to-br ${brandGradient} text-white shadow-md group-hover:scale-105 group-hover:shadow-lg transition-all duration-500`}
-                    >
-                      <ServiceIcon slug={product.slug} class="w-6 h-6" />
-                    </div>
-                    <span class="text-4xl font-extrabold text-zinc-100 group-hover:text-brand-600/20 transition-colors duration-500 select-none leading-none">
-                      {product.number}
-                    </span>
-                  </div>
+              return (
+                <ContentCard
+                  href={`/productos/${product.slug}`}
+                  variant="link"
+                  padding={false}
+                  class="flex flex-col"
+                  style={`animation-delay: ${index * 0.1}s`}
+                >
+                  <div
+                    class={`absolute inset-0 bg-linear-to-br ${brandGradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}
+                  />
 
-                  <h3 class="text-lg font-bold text-zinc-900 mb-2 group-hover:text-brand-600 transition-colors duration-300 line-clamp-2">
-                    {product.title}
-                  </h3>
+                  <div
+                    class={`absolute top-0 right-0 w-24 h-24 bg-linear-to-bl ${brandGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-bl-[80px] pointer-events-none`}
+                  />
 
-                  <p class="text-sm text-zinc-500 leading-relaxed mb-4 flex-1 line-clamp-3">
-                    {product.description}
-                  </p>
-
-                  <div class="flex items-center gap-2 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                    <span>Conocer más</span>
-                    <svg
-                      class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  {image && (
+                    <div class="relative aspect-3/2 overflow-hidden shrink-0">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        widths={[320, 480, 640]}
+                        sizes="(max-width: 1024px) 50vw, 33vw"
+                        loading="lazy"
+                        decoding="async"
                       />
-                    </svg>
+
+                      <div class="absolute inset-0 bg-linear-to-t from-zinc-900/25 via-transparent to-transparent" />
+
+                      <div class="absolute inset-0 ring-1 ring-inset ring-black/5" />
+                    </div>
+                  )}
+
+                  <div class="relative z-10 flex flex-col flex-1 p-5 sm:p-6">
+                    <div class="flex items-start justify-between mb-4">
+                      <div
+                        class={`inline-flex items-center justify-center p-3 rounded-xl bg-linear-to-br ${brandGradient} text-white shadow-md group-hover:scale-105 group-hover:shadow-lg transition-all duration-500`}
+                      >
+                        <ServiceIcon slug={product.slug} class="w-6 h-6" />
+                      </div>
+
+                      <span class="text-4xl font-extrabold text-zinc-100 group-hover:text-brand-600/20 transition-colors duration-500 select-none leading-none">
+                        {product.number}
+                      </span>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-zinc-900 mb-2 group-hover:text-brand-600 transition-colors duration-300 line-clamp-2">
+                      {product.title}
+                    </h3>
+
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-4 flex-1 line-clamp-3">
+                      {product.description}
+                    </p>
+
+                    <div class="flex items-center gap-2 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                      <span>Conocer más</span>
+
+                      <svg
+                        class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-              </a>
-            );
-          })
+                </ContentCard>
+              );
+            })
+          }
+        </div>
+
+        <!-- Featured row: full-width card with side image -->
+
+        {
+          featuredProduct &&
+            (() => {
+              const image = serviceImages[featuredProduct.slug];
+
+              return (
+                <ContentCard
+                  href={`/productos/${featuredProduct.slug}`}
+                  variant="link"
+                  padding={false}
+                  class="grid grid-cols-1 lg:grid-cols-2"
+                  style="animation-delay: 0.3s"
+                >
+                  <div
+                    class={`absolute inset-0 bg-linear-to-br ${brandGradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}
+                  />
+
+                  <div
+                    class={`absolute top-0 right-0 w-40 h-40 bg-linear-to-bl ${brandGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-bl-[100px] pointer-events-none`}
+                  />
+
+                  <div class="relative z-10 flex flex-col justify-center p-6 sm:p-8 lg:p-10 order-2 lg:order-1">
+                    <div class="flex items-start justify-between mb-5">
+                      <div
+                        class={`inline-flex items-center justify-center p-3.5 rounded-xl bg-linear-to-br ${brandGradient} text-white shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-500`}
+                      >
+                        <ServiceIcon
+                          slug={featuredProduct.slug}
+                          class="w-6 h-6"
+                        />
+                      </div>
+
+                      <span class="text-5xl lg:text-6xl font-extrabold text-zinc-100 group-hover:text-brand-600/20 transition-colors duration-500 select-none leading-none">
+                        {featuredProduct.number}
+                      </span>
+                    </div>
+
+                    <h3 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-3 group-hover:text-brand-600 transition-colors duration-300">
+                      {featuredProduct.title}
+                    </h3>
+
+                    <p class="text-sm sm:text-base text-zinc-500 leading-relaxed mb-5 max-w-2xl">
+                      {featuredProduct.description}
+                    </p>
+
+                    <div class="flex items-center gap-2 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                      <span>Conocer más</span>
+
+                      <svg
+                        class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {image && (
+                    <div class="relative aspect-16/10 lg:aspect-auto lg:min-h-[260px] overflow-hidden order-1 lg:order-2">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        widths={[640, 960, 1280]}
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                      <div class="absolute inset-0 bg-linear-to-r from-zinc-900/20 via-transparent to-transparent lg:bg-linear-to-l" />
+
+                      <div class="absolute inset-0 ring-1 ring-inset ring-black/5" />
+                    </div>
+                  )}
+                </ContentCard>
+              );
+            })()
         }
       </div>
-
-      <!-- Featured row: full-width card with side image -->
-      {
-        featuredProduct &&
-          (() => {
-            const image = serviceImages[featuredProduct.slug];
-            return (
-              <a
-                href={`/productos/${featuredProduct.slug}`}
-                class={`${cardBase} grid grid-cols-1 lg:grid-cols-2`}
-                style="animation-delay: 0.3s"
-              >
-                <div
-                  class={`absolute inset-0 bg-linear-to-br ${brandGradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}
-                />
-                <div
-                  class={`absolute top-0 right-0 w-40 h-40 bg-linear-to-bl ${brandGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-bl-[100px] pointer-events-none`}
-                />
-
-                <div class="relative z-10 flex flex-col justify-center p-6 sm:p-8 lg:p-10 order-2 lg:order-1">
-                  <div class="flex items-start justify-between mb-5">
-                    <div
-                      class={`inline-flex items-center justify-center p-3.5 rounded-xl bg-linear-to-br ${brandGradient} text-white shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-500`}
-                    >
-                      <ServiceIcon
-                        slug={featuredProduct.slug}
-                        class="w-6 h-6"
-                      />
-                    </div>
-                    <span class="text-5xl lg:text-6xl font-extrabold text-zinc-100 group-hover:text-brand-600/20 transition-colors duration-500 select-none leading-none">
-                      {featuredProduct.number}
-                    </span>
-                  </div>
-
-                  <h3 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-3 group-hover:text-brand-600 transition-colors duration-300">
-                    {featuredProduct.title}
-                  </h3>
-
-                  <p class="text-sm sm:text-base text-zinc-500 leading-relaxed mb-5 max-w-2xl">
-                    {featuredProduct.description}
-                  </p>
-
-                  <div class="flex items-center gap-2 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                    <span>Conocer más</span>
-                    <svg
-                      class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </div>
-                </div>
-
-                {image && (
-                  <div class="relative aspect-16/10 lg:aspect-auto lg:min-h-[260px] overflow-hidden order-1 lg:order-2">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      widths={[640, 960, 1280]}
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div class="absolute inset-0 bg-linear-to-r from-zinc-900/20 via-transparent to-transparent lg:bg-linear-to-l" />
-                    <div class="absolute inset-0 ring-1 ring-inset ring-black/5" />
-                  </div>
-                )}
-              </a>
-            );
-          })()
-      }
     </div>
-      </div>
-    </SectionCard>
-  </div>
-</section>
+  </SectionCard>
+</Section>

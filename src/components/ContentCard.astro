@@ -1,0 +1,46 @@
+---
+interface Props {
+  class?: string;
+  padding?: string | false;
+  href?: string;
+  /** `info` — static tiles; `link` — navigable cards; `flat` — no shadow/lift (FAQ) */
+  variant?: "info" | "link" | "flat";
+  style?: string;
+}
+
+const {
+  class: className = "",
+  padding = "p-6 sm:p-8",
+  href,
+  variant = "info",
+  style,
+} = Astro.props;
+
+const Tag = href ? "a" : "div";
+
+const variantStyles = {
+  info: "border border-zinc-200/70 hover:border-zinc-300/80 hover:shadow-md hover:shadow-black/8 hover:-translate-y-0.5",
+  link: "border border-zinc-200/70 hover:border-zinc-300/80 hover:shadow-lg hover:shadow-black/10",
+  flat: "border border-zinc-200",
+};
+---
+
+<Tag
+  href={href}
+  class:list={[
+    "relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-500 group",
+    variantStyles[variant],
+    className,
+  ]}
+  style={style}
+>
+  {
+    padding === false ? (
+      <slot />
+    ) : (
+      <div class:list={["relative", padding]}>
+        <slot />
+      </div>
+    )
+  }
+</Tag>
