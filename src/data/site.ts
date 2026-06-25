@@ -1,6 +1,6 @@
 export const SITE = {
   name: "Estilo Gráfico",
-  url: "https://estilografico.co",
+  url: "https://www.estilografico.co",
   locale: "es_CO",
   description:
     "Litografía e impresión gráfica en Medellín. Etiquetas, empaques, material impreso, gran formato y diseño profesional. Cotiza hoy.",
