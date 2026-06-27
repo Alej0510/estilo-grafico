@@ -1,43 +1,69 @@
-# Astro Starter Kit: Minimal
+<p align="center">
+  <img src="/src/assets/mockup.png" alt="Estilo gráfico mockup" />
+</p>
 
-```sh
-pnpm create astro@latest -- --template minimal
+Official website for **Estilo Gráfico**, a lithography, printing and graphic design company based in Medellín, Colombia. Built with Astro, Tailwind CSS and deployed on Vercel.
+ 
+**Live site:** https://estilo-grafico-co.vercel.app/
+ 
+---
+
+## Features
+ 
+- Services showcase: labels & packaging, printed materials, large format printing, and graphic design.
+- Frequently Asked Questions (FAQ) section.
+- Client brand logo slider.
+- Direct WhatsApp call-to-action.
+- SEO optimized (sitemap, Open Graph, structured metadata).
+- Integrated Vercel Analytics.
+- Smooth page transitions with Astro View Transitions.
+- Fully responsive design with Tailwind CSS v4.
+- Custom 404 error page.
+---
+ 
+## Tech Stack
+ 
+| Tool | Version | Purpose |
+|---|---|---|
+| [Astro](https://astro.build) | ^6.4.6 | Main framework |
+| [Tailwind CSS](https://tailwindcss.com) | ^4.3.0 | Styling |
+| [Sharp](https://sharp.pixelplumbing.com) | ^0.35.1 | Image optimization |
+| [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/) | ^3.7.3 | Sitemap generation |
+| [@vercel/analytics](https://vercel.com/analytics) | ^2.0.1 | Analytics |
+| [Vercel](https://vercel.com) | — | Hosting & deployment |
+ 
+---
+ 
+## Project Structure
+ 
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
+├── public/                  # Static assets (logos, favicons, og-image)
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/          # Reusable components (Navbar, Footer, etc.)
+│   ├── layouts/             # Base page layouts
+│   └── pages/               # Site routes
+│       ├── index.astro      # Home page
+│       ├── nosotros.astro   # About page
+│       ├── 404.astro        # Custom error page
+│       └── productos/       # Service pages
+│           ├── etiquetas-empaques.astro
+│           ├── material-impreso.astro
+│           ├── gran-formato.astro
+│           └── diseno-imagen.astro
+├── astro.config.mjs         # Astro configuration
+├── vercel.json              # Vercel configuration
+├── tsconfig.json            # TypeScript configuration
 └── package.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+##  Contact
+ 
+**Estilo Gráfico**
+- 📍 Medellín, Antioquia, Colombia
+- 📱 [+57 321 642 6377](https://wa.me/573216426377)
+- 📧 marketingestilografico@gmail.com
+- 📘 [Facebook](https://www.facebook.com/people/Estilo-gráfico/61572260665014/)
+- 📸 [Instagram](https://www.instagram.com/estilografico__)
+---
+ 
+© 2026 Estilo Gráfico. All rights reserved.
