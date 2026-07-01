@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import { WHATSAPP_URL } from "../data/products";
+import { whatsappUrl } from "../lib/whatsapp";
+
+const whatsappHref = whatsappUrl(Astro.url.pathname);
 import Arrow from "./icons/Arrow.astro";
 import HeroCard from "./HeroCard.astro";
 import heroImage from "../assets/hero.webp";
@@ -127,7 +129,7 @@ import heroImage from "../assets/hero.webp";
 
         <div class="w-full sm:w-auto shrink-0">
           <a
-            href={WHATSAPP_URL}
+            href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             class="relative flex w-full sm:w-auto sm:inline-flex items-center justify-center px-7 py-3.5 overflow-hidden rounded-full font-bold text-sm sm:text-base text-white group"
