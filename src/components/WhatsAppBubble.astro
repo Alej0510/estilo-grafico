@@ -1,9 +1,12 @@
 ---
+import { whatsappUrl } from "../lib/whatsapp";
 
+const pathname = Astro.url.pathname;
+const href = whatsappUrl(pathname);
 ---
 
 <a
-  href="https://wa.me/573216426377"
+  href={href}
   target="_blank"
   rel="noopener noreferrer"
   class="fixed bottom-6 right-6 z-50 group"
